@@ -1,5 +1,25 @@
+/* global styles  */
 *{
   margin: 0;
   padding: 0;
   box-sizing: 'border-box';
+}
+
+
+/* fonts  */
+@font-face {
+  font-family: 'RobotoLight'; 
+  src: url('./assets/fonts/roboto/Roboto-Light.ttf') format('truetype'); 
+}
+@font-face {
+  font-family: 'RobotoRegular'; 
+  src: url('./assets/fonts/roboto/Roboto-Regular.ttf') format('truetype'); 
+}
+@font-face {
+  font-family: 'RobotoMedium'; 
+  src: url('./assets/fonts/roboto/Roboto-Medium.ttf') format('truetype'); 
+}
+@font-face {
+  font-family: 'RobotoBold'; 
+  src: url('./assets/fonts/roboto/Roboto-Bold.ttf') format('truetype'); 
 }
