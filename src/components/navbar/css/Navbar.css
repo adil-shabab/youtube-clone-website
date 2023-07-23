@@ -1,13 +1,109 @@
 *{
     background-color: var(--bg-color);
 }
-.header .header_logo_section{
+
+/* logo section  */
+.header{
     padding: 15px 0px;
 }
 .header .header_logo_section .menu_bar{ 
-    width: 22px;
+    width: 20px;
 }
 .header .header_logo_section .logo_img{
-    width: 120px;
+    width: 110px;
+    margin-left: 25px;
+}
+
+
+
+/* search section  */
+.header .header_search_section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.header .header_search_section .search{
+    display: flex;
+}
+.header .header_search_section .search .search_input{
+    width: 600px;
+    height: 43px;
+    border: 2px solid var(--primary-color);
+    border-top-left-radius: 22px;
+    border-bottom-left-radius: 22px;
+    padding: 0px 18px;
+    font-family: 'RobotoRegular', sans-serif;
+    color: rgb(163, 163, 163);
+    outline: none;
+}
+.header .header_search_section .search .search_input:focus{
+    outline: none;
+}
+.header .header_search_section .search .search_icon_div{
+    background-color: var(--primary-color);
+    height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 15px;
+    cursor: pointer;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.header .header_search_section .search .search_icon_div .search_icon{
+    width: 28px;
+    background-color: var(--primary-color);
+    height: 28px;
+}
+.header .header_search_section .voice_icon_div{
+    background-color: var(--primary-color);
+    height: 40px;
+    margin-left: 15px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    align-items: center;
+    padding: 10px 11px;
+}
+.header .header_search_section  .voice_icon_div .voice_icon{
+    background-color: var(--primary-color);
+    width: 20px;
+}
+
+
+
+
+.header .video_icon_section{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+}
+.header .video_icon_section .video_icon{
+    width: 25px;
+}
+.header .notification_icon_div{
+    position: relative;
+}
+.header .notification_icon_div span{
+    position: absolute;
+    background-color: #CC0000;
+    color: white;
+    font-size: 12px;
+    padding: 0px 3px 0px 5px;
+    top: -3px;
+    right: -10px;
+    font-family: 'RobotoRegular', 'Helvetica Neue', Helvetica, Arial;
+
+    border-radius: 20px;
+}
+.header .video_icon_section .notification_icon{
+    width: 25px;
+    margin-left: 30px;
+}
+.header .video_icon_section .avatar_icon{
+    width: 25px;
     margin-left: 30px;
 }

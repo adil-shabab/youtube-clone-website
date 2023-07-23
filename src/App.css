@@ -9,10 +9,14 @@
   justify-content: center;
   align-items: center;
 }
-
+.app{
+  padding: 0px 28px;
+}
 
 :root {
   --bg-color: #0F0F0F; 
+  --primary-color: #222222; 
+
   --regularfont: 'RobotoRegular', sans-serif; 
   --boldfont: 'RobotoBold', sans-serif; 
   --mediumfont: 'RobotoMedium', sans-serif; 
