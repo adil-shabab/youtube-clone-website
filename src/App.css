@@ -4,6 +4,20 @@
   padding: 0;
   box-sizing: 'border-box';
 }
+.d-flex-full{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+:root {
+  --bg-color: #0F0F0F; 
+  --regularfont: 'RobotoRegular', sans-serif; 
+  --boldfont: 'RobotoBold', sans-serif; 
+  --mediumfont: 'RobotoMedium', sans-serif; 
+  --lightfont: 'RobotoLight', sans-serif; 
+}
 
 
 /* fonts  */
