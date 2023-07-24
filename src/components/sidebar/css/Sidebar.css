@@ -1,0 +1,38 @@
+.sidebar{
+    width: 100%;
+    margin-top: 8px;
+}
+.sidebar .button.active {
+    background-color: var(--primary-color);
+}
+.sidebar .button {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px 12px 20px;
+    border-radius: 12px;
+    margin-bottom: 7px;
+    cursor: pointer;
+}
+.sidebar .button .icon{
+    width: 20px;
+}
+.sidebar .button .text{
+    font-family: 'RobotoRegular', sans-serif;
+    font-size: 14px;
+    color: white;
+    margin-left: 28px;
+    margin-bottom: 0px;
+}
+.sidebar .button.active .icon{
+    background-color: var(--primary-color);
+}
+.sidebar .button.active .text{
+    background-color: var(--primary-color);
+}
+.sidebar .line{
+    border-bottom: 1px solid rgb(64, 64, 64);
+    margin-top: 15px;
+    width: 95%;
+    margin: 15px auto;
+    height: 1px;
+}

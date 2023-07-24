@@ -83,6 +83,7 @@
 }
 .header .video_icon_section .video_icon{
     width: 25px;
+    cursor: pointer;
 }
 .header .notification_icon_div{
     position: relative;
@@ -102,8 +103,10 @@
 .header .video_icon_section .notification_icon{
     width: 25px;
     margin-left: 30px;
+    cursor: pointer;
 }
 .header .video_icon_section .avatar_icon{
-    width: 25px;
+    width: 28px;
     margin-left: 30px;
+    cursor: pointer;
 }

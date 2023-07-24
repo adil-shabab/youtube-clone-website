@@ -1,12 +1,16 @@
 import React from 'react'
+import './css/Feed.css'
+import Sidebar from '../../components/sidebar/Sidebar'
 
 function Feed() {
 
-  let number = "Adil Shabab"
-  number 
   return (
-    <div>
-      
+    <div className='feed_container'>
+      <div className="row">
+        <div className="col-md-2">
+          <Sidebar/>
+        </div>
+      </div>
     </div>
   )
 }
