@@ -1,6 +1,9 @@
 .sidebar{
     width: 100%;
-    margin-top: 8px;
+    margin-top: 4px;
+    padding: 0px 5px 0px 0px;
+    max-height: 88vh;
+    overflow-y: scroll;
 }
 .sidebar .button.active {
     background-color: var(--primary-color);
@@ -10,11 +13,15 @@
     align-items: center;
     padding: 12px 15px 12px 20px;
     border-radius: 12px;
-    margin-bottom: 7px;
+    margin-bottom: 0px;
     cursor: pointer;
 }
 .sidebar .button .icon{
     width: 20px;
+}
+.sidebar .button .channel{
+    width: 25px;
+    border-radius: 50%;
 }
 .sidebar .button .text{
     font-family: 'RobotoRegular', sans-serif;
@@ -26,6 +33,9 @@
 .sidebar .button.active .icon{
     background-color: var(--primary-color);
 }
+.sidebar .button.active .channel{
+    background-color: var(--primary-color);
+}
 .sidebar .button.active .text{
     background-color: var(--primary-color);
 }
@@ -35,4 +45,17 @@
     width: 95%;
     margin: 15px auto;
     height: 1px;
+}
+.sidebar .footer_txt{
+    color: white;
+    font-size: 13px;
+    font-weight: 200;
+    padding: 0px 15px;
+    font-family: 'RobotoThin', sans-serif;
+}
+.sidebar .copy_right{
+    font-size: 13px;
+    color: white;
+    padding: 0px 15px;
+    padding-bottom: 25px;
 }
