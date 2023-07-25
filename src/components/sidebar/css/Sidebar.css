@@ -19,13 +19,18 @@
   /* Handle */
 .sidebar::-webkit-scrollbar-thumb {
     background: #888;
-    border-radius: 8px;
-
+    border-radius: 10px;
+    display: none;
+    transition: 0.3s ease-in-out;
 }
   
 /* Handle on hover */
 .sidebar:-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+.sidebar:hover::-webkit-scrollbar-thumb{
+    display: block;
 }
   
 
@@ -37,15 +42,21 @@
     align-items: center;
     padding: 12px 15px 12px 20px;
     border-radius: 12px;
+    transition: 0.2s ease-in;
     margin-bottom: 0px;
     cursor: pointer;
 }
+.sidebar .button:hover{
+    background-color: var(--primary-color);
+}
 .sidebar .button .icon{
     width: 20px;
+    background-color: transparent;
 }
 .sidebar .button .channel{
     width: 25px;
     border-radius: 50%;
+    background-color: transparent;
 }
 .sidebar .button .text{
     font-family: 'RobotoRegular', sans-serif;
@@ -53,6 +64,7 @@
     color: white;
     margin-left: 28px;
     margin-bottom: 0px;
+    background-color: transparent;
 }
 .sidebar .button.active .icon{
     background-color: var(--primary-color);
@@ -82,4 +94,7 @@
     color: white;
     padding: 0px 15px;
     padding-bottom: 25px;
+}
+.sidebar .link{
+    text-decoration: none ;
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './css/Sidebar.css'
 import SidebarCard from '../sidebarcard/SidebarCard'
 import Home from './img/icons/home.png'
@@ -38,11 +38,28 @@ import Thoppi from './img/channels/thoppi.jpg'
 import Traversy from './img/channels/traversy.jpg'
 import Umer from './img/channels/umer.jpg'
 import VarietyMedia from './img/channels/variety-media.jpg'
+import ArrowDown from './img/icons/arrow-down.png'
+import ArrowUp from './img/icons/arrow-up.png'
 
 
 
 
 function Sidebar() {
+
+
+  const [showMore, setShowMore] = useState(true);
+  const [showMoreTxt, setShowMoreTxt] = useState("Show More");
+
+  const handleClickShowMore = () => {
+    setShowMore(!showMore);
+      if (showMore) {
+        setShowMoreTxt("Show Less");
+      } else {
+        setShowMoreTxt("Show More");
+      }
+  }
+
+
   return (
     <div className='sidebar'>
         <SidebarCard Img={Home} Txt="Home" is_active={true} is_channel={false} />
@@ -68,9 +85,9 @@ function Sidebar() {
             <SidebarCard Img={MrLink} Txt="Mr.Link" is_active={false} is_channel={true} />
             <SidebarCard Img={VarietyMedia} Txt="Variety Media" is_active={false} is_channel={true} />
             <SidebarCard Img={Umer} Txt="Umer Abdussalam" is_active={false} is_channel={true} />
+            
 
-
-            <div className='d-none'>
+            <div className={showMore && 'd-none'}>
                 <SidebarCard Img={Asianet} Txt="Asianet" is_active={false} is_channel={true} />
                 <SidebarCard Img={ThinkMusic} Txt="Think Music India" is_active={false} is_channel={true} />
                 <SidebarCard Img={MileStone} Txt="Milestone Makers" is_active={false} is_channel={true} />
@@ -89,6 +106,11 @@ function Sidebar() {
                 <SidebarCard Img={FridayFilmHouse} Txt="Friday Film House" is_active={false} is_channel={true} />
                 <SidebarCard Img={DebugMedia} Txt="Debug Media" is_active={false} is_channel={true} />
             </div>
+        </div>
+
+
+        <div onClick={handleClickShowMore} className='link' href="">
+          <SidebarCard Img={showMore ? ArrowDown : ArrowUp} Txt={showMoreTxt} is_active={false} is_channel={true} is_button={true}/>
         </div>
 
         <div className="line"></div>

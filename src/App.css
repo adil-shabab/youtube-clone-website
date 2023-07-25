@@ -12,6 +12,9 @@
 .app{
   padding: 0px 28px;
 }
+a{
+  text-decoration: none;
+}
 
 :root {
   --bg-color: #0F0F0F; 
