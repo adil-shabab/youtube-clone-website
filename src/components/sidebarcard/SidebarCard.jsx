@@ -1,7 +1,6 @@
 import React from 'react'
 
 function SidebarCard({Img, Txt, is_active, is_channel, is_button}) {
-  console.log(Img)
   const channelStyle = {
     padding: is_channel ? '8px 15px 8px 20px' :  '12px 15px 12px 20px' ,
     margin: is_button && '10px 0px 0px 0px'
