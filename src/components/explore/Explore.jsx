@@ -18,7 +18,7 @@ function Explore() {
     <div className='explore_item_parent'>
         <HorizontalScroll className="scroll" reverseScroll={true}>
             {explore_title.map((item, index)=>(
-                <div key={index} className={`explore_item ${selectedItem === item && 'active'}`}>
+                <div key={index} onClick={()=>{setSelectedItem(item)}} className={`explore_item ${selectedItem === item && 'active'}`}>
                     <span>{item}</span>
                 </div>
             ))}
