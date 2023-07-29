@@ -51,4 +51,9 @@
     font-size: 11px;
     padding: 1px 7px;
     border-radius: 4px;
+    transition: 1s;
+    display: none;
+}
+.vedio_card:hover .time{
+    display: block;
 }
