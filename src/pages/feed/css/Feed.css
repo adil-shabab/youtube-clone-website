@@ -1,3 +1,16 @@
 .feed_container{
     width: 100%;
+    margin-top: 73px;
+}
+.feed_container .content{
+    display: flex;
+    position: relative;
+}
+.feed_container .vedio_parent{
+    width: 81%;
+    margin-left: 18%;
+}
+.feed_container .sidebar_parent{
+    width: 16%;
+    position: fixed;
 }

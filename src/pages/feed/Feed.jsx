@@ -18,11 +18,11 @@ function Feed() {
 
   return (
     <div className='feed_container'>
-      <div className="row">
-        <div className="col-md-2">
+      <div className="content">
+        <div className="sidebar_parent">
           <Sidebar/>
         </div>
-        <div className="col-md-10">
+        <div className="vedio_parent">
           <Explore />
 
           <div className='row'>

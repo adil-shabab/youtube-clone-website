@@ -4,7 +4,13 @@
 
 /* logo section  */
 .header{
-    padding: 15px 0px;
+    padding: 17px 35px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 11;
 }
 .header .header_logo_section .menu_bar{ 
     width: 20px;
