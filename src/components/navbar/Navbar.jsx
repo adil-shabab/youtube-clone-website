@@ -4,6 +4,7 @@ import Logo from '../../assets/img/logo.png'
 import Menu from './img/hamburger-menu.png'
 import Search from './img/search.png'
 import Voice from './img/voice.png'
+import Close from './img/close.png'
 import Avatar from './img/avatar.png'
 import Notification from './img/notification.png'
 import Video from './img/video.png'
@@ -14,18 +15,18 @@ import MyContext from '../../context/MyContext'
 
 function Navbar() {
 
-  const {showMenu,setShowMenu} = useContext(MyContext)
+  const {showMenu,setShowMenu, setIsMobileSearch, isMobileSearch} = useContext(MyContext)
 
   return (
     <div className='header'>
-      <div className="row">
-        <div className="col-lg-2 col-3 d-flex align-items-center">
+      <div className={`row ${isMobileSearch && 'd-none'}`}>
+        <div className="col-lg-2 col-md-3 col-6 d-flex align-items-center">
           <div className="header_logo_section">
             <img onClick={() => setShowMenu(!showMenu)} src={Menu} alt="menu_bar" className='menu_bar' />
             <img src={Logo} alt='logo' className='logo_img' />
           </div>
         </div>
-        <div className="col-lg-8 col-6 d-flex align-items-center">
+        <div className="col-lg-8 col-md-6 col-1 d-flex align-items-center">
           <div className="header_search_section">
             <div className="search">
               <input placeholder='Search' type="text" className='search_input' />
@@ -39,8 +40,11 @@ function Navbar() {
           </div>
         </div>
         
-        <div className="col-lg-2 col-3 d-flex align-items-center">
+        <div className="col-lg-2 col-md-3 col-5 d-flex align-items-center">
           <div className='video_icon_section'>
+            <div onClick={()=> setIsMobileSearch(!isMobileSearch)} className="d-md-none d-block video_icon_div">
+              <img src={Search} alt="video-icon" style={{marginRight: '13px'}} className='video_icon' />
+            </div>
             <div className="video_icon_div">
               <img src={Video} alt="video-icon" className='video_icon' />
             </div>
@@ -54,6 +58,15 @@ function Navbar() {
           </div>
         </div>
       </div>
+
+      <div className={`mobile_search ${isMobileSearch && 'd-flex'}`}>
+        <div style={{width: '90%', position: 'relative'}}>
+          <input type="text" placeholder='Search' />
+          <img src={Search} className='search img-fluid' alt="" />
+        </div>
+        <img onClick={()=> setIsMobileSearch(!isMobileSearch)} src={Close} alt="" className="close" />
+      </div>
+
     </div>
   )
 }

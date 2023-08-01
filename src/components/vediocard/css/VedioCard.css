@@ -61,3 +61,19 @@
 .vedio_card:hover .time{
     display: block;
 }
+
+
+
+
+
+@media screen and (max-width: 450px) {
+    .vedio_card .title{
+        font-size: 14px;
+    }
+    .vedio_card .channel_name, .vedio_card .views{
+        font-size: 13px;
+    }
+    .vedio_card .channel_name{
+        margin-top: 6px;
+    }
+}

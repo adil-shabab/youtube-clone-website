@@ -8,11 +8,14 @@ import MyContext from './context/MyContext';
 
 function App() {
   const [showMenu, setShowMenu] = useState(false);
+  const [isMobileSearch, setIsMobileSearch] = useState(false);
 
 
   const sharedState ={
     showMenu,
-    setShowMenu
+    setShowMenu,
+    isMobileSearch,
+    setIsMobileSearch
   }
 
   return (
