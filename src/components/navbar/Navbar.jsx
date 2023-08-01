@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import './css/Navbar.css'
 import Logo from '../../assets/img/logo.png'
 import Menu from './img/hamburger-menu.png'
@@ -7,17 +7,21 @@ import Voice from './img/voice.png'
 import Avatar from './img/avatar.png'
 import Notification from './img/notification.png'
 import Video from './img/video.png'
+import MyContext from '../../context/MyContext'
 
 
 
 
 function Navbar() {
+
+  const {showMenu,setShowMenu} = useContext(MyContext)
+
   return (
     <div className='header'>
       <div className="row">
         <div className="col-lg-2 col-3 d-flex align-items-center">
           <div className="header_logo_section">
-            <img src={Menu} alt="menu_bar" className='menu_bar' />
+            <img onClick={() => setShowMenu(!showMenu)} src={Menu} alt="menu_bar" className='menu_bar' />
             <img src={Logo} alt='logo' className='logo_img' />
           </div>
         </div>
