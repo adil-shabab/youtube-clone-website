@@ -7,8 +7,8 @@ function SidebarCard({Img, Txt, is_active, is_channel, is_button}) {
   }
   const channelText = {
     fontSize: is_channel && '13px',
-    marginLeft: is_button && '35px'
-
+    marginLeft: is_button && '35px',
+    fontSize:  is_channel && '12px'
   }
   const arrowStyle = {
     width: is_button && '18px'

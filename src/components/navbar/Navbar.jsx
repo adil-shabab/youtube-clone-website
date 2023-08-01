@@ -15,13 +15,13 @@ function Navbar() {
   return (
     <div className='header'>
       <div className="row">
-        <div className="col-md-2 d-flex align-items-center">
+        <div className="col-lg-2 col-3 d-flex align-items-center">
           <div className="header_logo_section">
             <img src={Menu} alt="menu_bar" className='menu_bar' />
             <img src={Logo} alt='logo' className='logo_img' />
           </div>
         </div>
-        <div className="col-md-8 d-flex align-items-center">
+        <div className="col-lg-8 col-6 d-flex align-items-center">
           <div className="header_search_section">
             <div className="search">
               <input placeholder='Search' type="text" className='search_input' />
@@ -35,7 +35,7 @@ function Navbar() {
           </div>
         </div>
         
-        <div className="col-md-2 d-flex align-items-center">
+        <div className="col-lg-2 col-3 d-flex align-items-center">
           <div className='video_icon_section'>
             <div className="video_icon_div">
               <img src={Video} alt="video-icon" className='video_icon' />
