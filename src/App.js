@@ -5,6 +5,7 @@ import Feed from './pages/feed/Feed';
 import Vedio from './pages/vedio/Vedio';
 import React, { useState } from 'react';
 import MyContext from './context/MyContext';
+import Channel from './pages/channel/Channel';
 
 function App() {
   const [showMenu, setShowMenu] = useState(false);
@@ -22,7 +23,7 @@ function App() {
     <MyContext.Provider value={sharedState}>
       <div className='app'>
         <Navbar />
-        <Feed />
+        <Channel />
       </div>
     </MyContext.Provider>
   );
