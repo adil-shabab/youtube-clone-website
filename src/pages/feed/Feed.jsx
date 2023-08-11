@@ -35,24 +35,24 @@ function Feed() {
           <Explore />
 
           <div className='row'>
-            <di className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
+            <div className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
               <VedioCard video={array[0]} />
-            </di>
-            <di className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
+            </div>
+            <div className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
               <VedioCard video={array[1]} />
-            </di>
-            <di className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
+            </div>
+            <div className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
               <VedioCard video={array[0]} />
-            </di>
-            <di className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
+            </div>
+            <div className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
               <VedioCard video={array[0]} />
-            </di>
-            <di className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
+            </div>
+            <div className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
               <VedioCard video={array[1]} />
-            </di>
-            <di className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
+            </div>
+            <div className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
               <VedioCard video={array[0]} />
-            </di>
+            </div>
             
           </div>
         </div>

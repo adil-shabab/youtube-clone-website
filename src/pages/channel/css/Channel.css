@@ -18,6 +18,47 @@
 }
 
 
+
+.channel_details{
+    margin-top: 35px;
+    padding-left: 50px;
+    display: flex;
+}
+.channel_details .logo_img{
+    width: 120px;
+    border-radius: 50%;
+}
+.channel_details .name{
+    font-family: 'RobotoRegular';
+    margin-bottom: 5px;
+    color: rgb(224, 224, 224);
+    font-size: 22px;
+}
+.channel_details .views{
+    color: rgb(200, 200, 200);
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+.channel_details .description{
+    color: rgb(200, 200, 200);
+    font-size: 16px;
+    margin-bottom: 0px;
+}
+.subscribe_btn{
+    color: black;
+    background-color: white;
+    border: none;
+    outline: none;
+    padding: 5px 15px;
+    font-family: 'RobotoRegular';
+    font-size: 17px;
+    border-radius: 4px;
+    margin-right: 20px;
+}
+
+
+
+
 @media screen and (max-width:992px){
     .feed_container .vedio_parent{
         width: 100%;
