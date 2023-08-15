@@ -76,3 +76,10 @@ a{
 *:-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+
+@media screen and (max-width: 992px) {
+  .app{
+    padding: 0px 10px;
+  }
+}

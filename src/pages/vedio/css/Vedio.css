@@ -58,6 +58,7 @@
     margin-right: 15px;
     padding: 8px 20px;
     border-radius: 20px;
+    cursor: pointer;
 }
 .video_details .channel_detail_section .video_detail .sm_box p{
     color: var(--text-color);
@@ -104,5 +105,72 @@
     margin-bottom: 25px;
     font-family: var(--regularfont);
 }
+.view_comment_btn{
+    background: var(--primary-color);
+    color: var(--text-color);
+    padding: 8px 17px;
+    margin-bottom: 17px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: var(--regularfont);
+    font-size: 15px;
+}
 
 
+@media screen and (max-width: 992px) {
+    .feed_container .content{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .video_details .vedio_title{
+        font-size: 16px;
+    }
+    .video_details .channel_detail_section .channel_main_details .channel{
+        margin-right: 5px;
+    }
+    .video_details .channel_detail_section .channel_main_details .channel{
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .video_details .channel_detail_section .channel_main_details{
+        justify-content: flex-start;
+    }
+    .video_details .channel_detail_section .channel_main_details .subscribers{
+        font-size: 14px;
+    }
+    .video_details .channel_detail_section .video_detail .sm_box{
+        margin-right: 5px;
+        width: 33%;
+        border-radius: 5px;
+    }
+    .video_details .channel_detail_section .video_detail{
+        justify-content: flex-start;
+    }
+    .video_details .channel_detail_section .channel_main_details .channel{
+        margin-right: 35px;
+        margin-left: 35px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .video_details .channel_detail_section .channel_main_details{
+        justify-content: space-between;
+    }
+    .video_details .channel_detail_section .video_detail{
+        justify-content: space-between;
+    }
+    .video_details .channel_detail_section .video_detail .sm_box{
+        width: unset;
+    }
+    .video_details .channel_detail_section .channel_main_details .channel{
+        margin-right: unset;
+        margin-left: unset;
+    }
+    .video_details .channel_detail_section .video_detail img{
+        width: 14px;
+    }
+    .video_details .channel_detail_section .video_detail .sm_box p{
+        font-size: 14px;
+    }
+}

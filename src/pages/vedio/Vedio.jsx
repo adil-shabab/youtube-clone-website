@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Like from './img/like.png'
 import Share from './img/share.png'
 import Download from './img/download.png'
@@ -20,26 +20,71 @@ import Thumbnail5 from './img/thumbnail5.webp'
 import Thumbnail6 from './img/thumbnail6.webp'
 import RelatedCard from '../../components/relatedvideo/RelatedCard'
 
+
+
+import Thumbnails1 from '../feed/img/sample-thumbnail.png'   // to remove
+import Channel1 from '../feed/img/sample-channel.jpg'       // to remove
+import Thumbnails2 from '../feed/img/sample-thumbnail-2.png'   // to remove
+import Channel2 from '../feed/img/sample-channel-2.jpg'       // to remove
+import VedioCard from '../../components/vediocard/VedioCard'
+
+
+
 function Vedio() {
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Adjust the threshold as needed
+    };
+
+    // Initial check and add event listener
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    // Clean up event listener
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const toggleComments = () => {
+    setIsMobile(!isMobile);
+  };
+
+
+
+  let array = [
+    {img: Thumbnails1, title: 'King of Kotha - Kalapakkaara Lyric Video | Dulquer Salmaan | Abhilash Joshiy | Jakes Bejoy', channel: Channel1, views: '2.5M views . 1 day ago ', channelName: 'Sony Music South'},
+    {img: Thumbnails2, title: 'Halaballoo - Video Song | RDX | Shane Nigam,Antony Varghese, Neeraj Madhav | Nahas Hidhayath', channel: Channel2, views: '1.2M views . 15 hours ago ', channelName: 'Saregama Malayalam'},
+  ]
+
 
   
 
   return (
     <div className='feed_container'>
-      <div className="content px-5">
-        <div className="video_details row w-100 px-5 mt-3">
-          <div className="col-md-8">
+      <div className="content px-lg-5">
+        <div className="video_details row w-100 px-lg-5 mt-md-3">
+          <div className="col-lg-8">
 
 
-          <iframe
-          width="830"
-          height="491"
-          src="https://www.youtube.com/embed/0E1kVRRi6lk?autoplay=1&mute=0" // Autoplay and mute
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        ></iframe>
-
-
+          <div style={{ position: 'relative', width: '100%', paddingBottom: '56.25%' }}>
+            <iframe
+              src="https://www.youtube.com/embed/0E1kVRRi6lk?autoplay=1&mute=0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+              }}
+            ></iframe>
+          </div>
+        
 
           <h2 className="vedio_title">Beast - Official Trailer | Thalapathy Vijay | Sun Pictures | Nelson | Anirudh | Pooja Hegde</h2>
             <div className="row channel_detail_section">
@@ -90,7 +135,19 @@ function Vedio() {
             </div>
 
 
+
+            {isMobile && 
+              <div onClick={toggleComments} className="view_comment_btn">View Comments (202312)</div>
+            }
             
+            {!isMobile && 
+              <div onClick={toggleComments} className="d-md-none d-block view_comment_btn">Hide Comments</div>
+            }
+
+
+            
+
+            {!isMobile && 
 
             <div className="video_comments">
               <p className="comment_count">202,312 Comments</p>
@@ -179,11 +236,15 @@ function Vedio() {
 
 
             </div>
+
+            }
+
+            
           </div>
 
 
           
-          <div className="col-md-4">
+          <div className="col-lg-4 d-md-block d-none">
             <div className="related_videos">
               
 
@@ -318,6 +379,26 @@ function Vedio() {
             views="102M"
             date="2 year ago"
           />
+
+
+
+            </div>
+
+
+
+
+          </div>
+          <div className="col-12 d-md-none d-block">
+            <div className="related_videos">
+              
+            <div className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
+              <VedioCard video={array[0]} />
+            </div>
+            <div className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
+              <VedioCard video={array[1]} />
+            </div>
+
+            
 
 
 
