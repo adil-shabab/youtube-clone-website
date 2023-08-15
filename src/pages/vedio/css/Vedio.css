@@ -44,7 +44,6 @@
     display: flex;
     justify-content: flex-end;
     margin-top: 15px;
-    padding-right: 66px;
     align-items: center;
 }
 .video_details .channel_detail_section .video_detail img{
@@ -62,6 +61,7 @@
 }
 .video_details .channel_detail_section .video_detail .sm_box p{
     color: var(--text-color);
+    font-family: var(--regularfont);
     margin-bottom: 0px;
     background: var(--primary-color);
     margin-left: 12px;
@@ -74,7 +74,6 @@
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 30px;
-    margin-right: 66px;
 }
 .video_description > *{
     background-color: var(--primary-color);
@@ -99,3 +98,11 @@
     color: var(--text-color);
     font-size: 15px;
 }
+.video_comments .comment_count{
+    color: var(--text-color);
+    font-size: 17px;
+    margin-bottom: 25px;
+    font-family: var(--regularfont);
+}
+
+

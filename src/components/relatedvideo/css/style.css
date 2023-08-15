@@ -1,0 +1,36 @@
+
+
+.video_card{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.video_card .thumbnail{
+    width: 190px;
+}
+.video_card .txt_area{
+    margin-left: 10px;
+}
+.video_card .txt_area .video_title{
+    font-size: 15px;
+    color: var(--text-color);
+    font-family: var(--regularfont);
+    margin-bottom: 6px;
+}
+.video_card .txt_area .channel_name{
+    font-size: 13px;
+    color: var(--text-color);
+    font-family: var(--lightfont);
+    margin-bottom: 2px;
+}
+.video_card .txt_area .views{
+    font-size: 13px;
+    color: var(--text-color);
+    font-family: var(--lightfont);
+    margin-bottom: 3px;
+}
+.video_card .txt_area .views span{
+    margin-left: 10px;
+}

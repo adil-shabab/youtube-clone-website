@@ -1,0 +1,51 @@
+
+.comment{
+    display: flex;
+    align-items: flex-start;
+    color: var(--text-color);
+    margin-bottom: 40px;
+}
+.comment .profile{
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+.comment .txt_area .username{
+    margin-bottom: 5px;
+    font-family: var(--regularfont);
+    font-size: 15px;
+}
+.comment .txt_area .username span{
+    margin-left: 25px;
+    font-family: var(--regularfont);
+    font-size: 15px;
+}
+.comment .txt_area .txt{
+    font-size: 15px;
+    font-family: var(--lightfont);
+    margin-bottom: 5px;
+}
+.comment .txt_area .like{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.comment .txt_area .like .reply{
+    margin-left: 25px;
+    font-size: 15px;
+    font-family: var(--lightfont);
+    margin-bottom: 0px;
+}
+.comment .txt_area .like .like_count{
+    font-family: var(--lightfont);
+    font-size: 15px;
+    margin-left: 10px;
+    margin-bottom: 0px;
+    margin-right: 20px;
+}
+.comment .txt_area .like .dislike_icon{
+    width: 17px;
+}
+.comment .txt_area .like .like_icon{
+    width: 17px;
+}
