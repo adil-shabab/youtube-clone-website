@@ -23,7 +23,7 @@ function App() {
     <MyContext.Provider value={sharedState}>
       <div className='app'>
         <Navbar />
-        <Channel />
+        <Vedio />
       </div>
     </MyContext.Provider>
   );

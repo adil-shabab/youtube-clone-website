@@ -1,0 +1,101 @@
+
+
+.video_details .vedio_title {
+    color: var(--text-color);
+    font-size: 20px;
+    font-family: var(--mediumfont);
+    margin-top: 12px;
+    margin-bottom: 10px;
+}
+.video_details .channel_detail_section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.video_details .channel_detail_section .channel_img{
+    width: 45px;
+    border-radius: 50%;
+}
+.video_details .channel_detail_section .channel_main_details{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.video_details .channel_detail_section .channel_main_details .channel{
+    margin-left: 25px;
+    margin-right: 35px;
+}
+.video_details .channel_detail_section .channel_main_details .channel_title{
+    color: var(--text-color);
+    font-size: 17px;
+    font-family: var(--regularfont);
+    margin-bottom: 0;
+}
+.video_details .channel_detail_section .channel_main_details .subscribers{
+    font-size: 15px;
+    margin-bottom: 0px;
+    font-family: var(--lightfont);
+    color: var(--text-color);
+}
+.video_details .channel_detail_section .channel_main_details .subscribe_btn{
+    border-radius: 20px;
+}
+.video_details .channel_detail_section .video_detail{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+    padding-right: 66px;
+    align-items: center;
+}
+.video_details .channel_detail_section .video_detail img{
+    width: 18px;
+    background-color: var(--primary-color);
+}
+.video_details .channel_detail_section .video_detail .sm_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+    margin-right: 15px;
+    padding: 8px 20px;
+    border-radius: 20px;
+}
+.video_details .channel_detail_section .video_detail .sm_box p{
+    color: var(--text-color);
+    margin-bottom: 0px;
+    background: var(--primary-color);
+    margin-left: 12px;
+}
+
+
+.video_description{
+    margin-top: 20px;
+    background-color: var(--primary-color);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    margin-right: 66px;
+}
+.video_description > *{
+    background-color: var(--primary-color);
+}
+.video_description .view_time{
+    color: var(--text-color);
+    font-family: var(--regularfont);
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+.video_description .desc{
+    color: var(--text-color);
+    font-size: 15px;
+    margin-bottom: 5px;
+    background-color: var(--primary-color);
+    font-family: var(--lightfont);
+}
+.video_description .toggle{
+    background-color: var(--primary-color);
+    font-family: var(--regularfont);
+    cursor: pointer;
+    color: var(--text-color);
+    font-size: 15px;
+}

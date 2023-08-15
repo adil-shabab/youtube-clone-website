@@ -19,6 +19,7 @@ a{
 :root {
   --bg-color: #0F0F0F; 
   --primary-color: #222222; 
+  --text-color: rgb(224, 224, 224);
 
   --regularfont: 'RobotoRegular', sans-serif; 
   --boldfont: 'RobotoBold', sans-serif; 
