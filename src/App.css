@@ -26,6 +26,11 @@ a{
   --lightfont: 'RobotoLight', sans-serif; 
 }
 
+.text-color{
+  color: rgb(224, 224, 224);
+  font-family: var(--regularfont);
+}
+
 
 /* fonts  */
 @font-face {

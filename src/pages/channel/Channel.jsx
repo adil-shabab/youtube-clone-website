@@ -4,7 +4,7 @@ import MyContext from '../../context/MyContext'
 import Sidebar from '../../components/sidebar/Sidebar'
 import Bg from './img/bg.png'
 import Logo from './img/logo.jpg'
-import VedioCard from '../../components/vediocard/css/VedioCard.css'
+import VedioCard from '../../components/vediocard/VedioCard'
 import Thumbnail1 from '../../components/vediocard/img/sample-thumbnail.png'   // to remove
 import Channel1 from '../../components/vediocard/img/sample-channel.jpg'       // to remove
 import Thumbnail2 from '../../components/vediocard/img/sample-thumbnail-2.png'   // to remove
@@ -32,26 +32,32 @@ function Channel() {
           setShowMenu(false)
         }}} className="vedio_parent">
         
-        <img src={Bg} className='mt-2 img-fluid' />
+        <img src={Bg} className='bg_channel mt-2 img-fluid' />
 
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-lg-10">
             <div className="channel_details">
                <img src={Logo} className='img-fluid logo_img' alt="" />
-               <div className='ms-4 d-flex flex-column justify-content-center'>
+                <div className='ms-4 d-flex flex-column justify-content-center'>
                   <h3 className="name">Nothing</h3>
-                  <p className="views"><span>@NothingTechnology</span>  526K Subscribers  122 Videos</p>
-                  <p className="description">Building a world where tech is fully powerful</p>
-               </div>
+                  <p className="d-sm-none d-block views"><span>@NothingTechnology</span></p>
+                  <p className="views d-sm-block d-none"><span>@NothingTechnology</span>  526K Subscribers  122 Videos</p>
+                  <p className="d-sm-block d-none description">Building a world where tech is fully powerful</p>
+                  <button className="mt-2 d-lg-none d-block subscribe_btn">Subscribe</button>
+                </div>
+            </div>
+            <div className=' d-sm-none d-block mt-4'>
+              <p className="text-color mb-1"><span>  526K Subscribers  122 Videos </span></p>
+              <p className="text-color mb-1">Building a world where tech is fully powerful</p>
             </div>
           </div>
-          <div className="col-md-6 d-flex justify-content-end align-items-center">
+          <div className="col-lg-2 d-lg-flex d-none justify-content-end align-items-center">
             <button className="subscribe_btn">Subscribe</button>
           </div>
         </div>
 
 
-        <div className='row'>
+        <div className='row mt-4'>
           <div className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
             <VedioCard video={array[0]} />
           </div>
