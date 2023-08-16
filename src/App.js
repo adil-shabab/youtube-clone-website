@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './components/navbar/Navbar';
@@ -23,7 +24,13 @@ function App() {
     <MyContext.Provider value={sharedState}>
       <div className='app'>
         <Navbar />
-        <Vedio />
+        <Router>
+          <Routes>
+            <Route exact path="/" element={<Feed />}/>
+            <Route path="/video/:id" element={<Vedio />}/>
+            <Route path="/channel/:id" element={<Channel />}/>
+          </Routes>  
+        </Router>
       </div>
     </MyContext.Provider>
   );
