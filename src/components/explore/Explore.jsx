@@ -1,6 +1,7 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import './css/Explore.css'
 import HorizontalScroll from "react-scroll-horizontal";
+import MyContext from '../../context/MyContext';
 
 
 function Explore() {
@@ -9,7 +10,7 @@ function Explore() {
     "All", "Mixes", "Tamil Cinema", "Music", "Python", "Live", "News Malayalam", "Next JS", "Sketch", "AI", "Gaming", "Programming", "Gadegets", "Asian Music", "Recently Uploaded", "Javascript", "MERN", "Django", "React Native"
   ]
 
-  const [selectedItem, setSelectedItem] = useState("All");
+  const {selectedItem, setSelectedItem} = useContext(MyContext)
 
 
 

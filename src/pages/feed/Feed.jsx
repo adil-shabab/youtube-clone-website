@@ -1,4 +1,4 @@
-import React,{useContext} from 'react'
+import React,{useContext, useEffect, useState} from 'react'
 import './css/Feed.css'
 import Sidebar from '../../components/sidebar/Sidebar'
 import Explore from '../../components/explore/Explore'
@@ -8,11 +8,23 @@ import Channel1 from './img/sample-channel.jpg'       // to remove
 import Thumbnail2 from './img/sample-thumbnail-2.png'   // to remove
 import Channel2 from './img/sample-channel-2.jpg'       // to remove
 import MyContext from '../../context/MyContext'
+import { FetchFromAPI } from '../../api/FetchFromAPI'
+
+
 
 function Feed() {
-  
 
-  const {showMenu, setShowMenu} = useContext(MyContext)
+  const {showMenu, setShowMenu, selectedItem} = useContext(MyContext)
+  const [videos, setVideos] = useState([]);
+
+
+  useEffect(() => {
+    FetchFromAPI(`search?part=snippet&q=${selectedItem}`)
+    .then((data) => {
+      console.log(data)
+      setVideos(data.items)
+    })
+  }, [selectedItem]);
 
 
   let array = [
@@ -35,25 +47,12 @@ function Feed() {
           <Explore />
 
           <div className='row'>
-            <div className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
-              <VedioCard video={array[0]} />
-            </div>
-            <div className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
-              <VedioCard video={array[1]} />
-            </div>
-            <div className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
-              <VedioCard video={array[0]} />
-            </div>
-            <div className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
-              <VedioCard video={array[0]} />
-            </div>
-            <div className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
-              <VedioCard video={array[1]} />
-            </div>
-            <div className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
-              <VedioCard video={array[0]} />
-            </div>
-            
+          
+            {videos.map((item)=> (
+              <div className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
+                <VedioCard video={item} />
+              </div>
+            ))}
           </div>
         </div>
       </div>
