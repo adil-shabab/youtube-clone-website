@@ -22,7 +22,6 @@ function VedioCard({ video }) {
           className="img-fluid thumbnail"
           alt=""
         />
-        <p className="time">11:30</p>
       </div>
       <div className="d-flex">
         <img src={Profile} alt="" className="channel_img img-fluid" />

@@ -7,7 +7,7 @@ import MyContext from '../../context/MyContext';
 function Explore() {
 
   const explore_title = [
-    "All", "Mixes", "Tamil Cinema", "Music", "Python", "Live", "News Malayalam", "Next JS", "Sketch", "AI", "Gaming", "Programming", "Gadegets", "Asian Music", "Recently Uploaded", "Javascript", "MERN", "Django", "React Native"
+    "New Indian Videos","All", "Mixes", "Tamil Cinema", "Music", "Python", "Live", "News Malayalam", "Next JS", "Sketch", "AI", "Gaming", "Programming", "Gadegets", "Asian Music", "Recently Uploaded", "Javascript", "MERN", "Django", "React Native"
   ]
 
   const {selectedItem, setSelectedItem} = useContext(MyContext)
