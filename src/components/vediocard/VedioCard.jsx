@@ -1,72 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './css/VedioCard.css';
-import { FetchFromAPI } from '../../api/FetchFromAPI';
+import TimeAgo from '../../utlis/TimeAgo'; 
+import Profile from '../../assets/img/profile.jpg';
 
 function VedioCard({ video }) {
-  const [videoDetails, setVideoDetails] = useState(null);
-  const [channelDetails, setChannelDetails] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const truncatedText = video.snippet.title
+    .split(' ')
+    .slice(0, 13)
+    .join(' ');
 
-  useEffect(() => {
-    setLoading(true);
-    setError(null);
-
-    FetchFromAPI(`videos?part=snippet,statistics&id=${video.id.videoId}`)
-      .then((data) => {
-        setVideoDetails(data.items[0]);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err);
-        setLoading(false);
-      });
-  }, [video]);
-
-  useEffect(() => {
-    setLoading(true);
-    setError(null);
-
-    FetchFromAPI(`channels?part=snippet,statistics&id=${video.snippet.channelId}`)
-      .then((data) => {
-        setChannelDetails(data.items[0]);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err);
-        setLoading(false);
-      });
-  }, [video]);
-
-  let words = video.snippet.title.split(' ');
-  let truncatedText = words.slice(0, 13).join(' ');
-  let ellipsis;
-  if (video.snippet.title.split(/\s+/).filter(word => word !== '').length > 13) {
-    ellipsis = words.length > 13 ? ' ...' : '';
-  } else {
-    ellipsis = '';
-  }
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
+  const ellipsis =
+    video.snippet.title.split(/\s+/).filter((word) => word !== '').length > 13
+      ? ' ...'
+      : '';
 
   return (
     <div className="vedio_card">
       <div className="img_section">
-        <img src={video.snippet.thumbnails.high.url} className='img-fluid thumbnail' alt="" />
-        <p className='time'>11:30</p>
+        <img
+          src={video.snippet.thumbnails.high.url}
+          className="img-fluid thumbnail"
+          alt=""
+        />
+        <p className="time">11:30</p>
       </div>
       <div className="d-flex">
-        <img src={channelDetails?.snippet.thumbnails.medium.url} alt="" className="channel_img img-fluid" />
+        <img src={Profile} alt="" className="channel_img img-fluid" />
         <div>
-          <h4 className="title">{truncatedText}{ellipsis}</h4>
-          <h6 className="channel_name">{channelDetails?.snippet.title}</h6>
-          <p className="views">{videoDetails?.statistics.viewCount}</p>
+          <h4 className="title">
+            {truncatedText}
+            {ellipsis}
+          </h4>
+          <h6 className="channel_name">{video?.snippet.channelTitle}</h6>
+          <TimeAgo date={new Date(video.snippet.publishTime)} />
         </div>
       </div>
     </div>

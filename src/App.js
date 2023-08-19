@@ -11,7 +11,7 @@ import Channel from './pages/channel/Channel';
 function App() {
   const [showMenu, setShowMenu] = useState(false);
   const [isMobileSearch, setIsMobileSearch] = useState(false);
-  const [selectedItem, setSelectedItem] = useState("All");
+  const [selectedItem, setSelectedItem] = useState("New Indian Videos");
 
 
 
