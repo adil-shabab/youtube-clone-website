@@ -2,6 +2,7 @@ import React from 'react';
 import './css/VedioCard.css';
 import TimeAgo from '../../utlis/TimeAgo'; 
 import Profile from '../../assets/img/profile.jpg';
+import { Link } from 'react-router-dom';
 
 function VedioCard({ video }) {
   const truncatedText = video.snippet.title
@@ -15,6 +16,7 @@ function VedioCard({ video }) {
       : '';
 
   return (
+    <Link to={`/video/${video.id.videoId}`}>
     <div className="vedio_card">
       <div className="img_section">
         <img
@@ -35,6 +37,7 @@ function VedioCard({ video }) {
         </div>
       </div>
     </div>
+    </Link>
   );
 }
 

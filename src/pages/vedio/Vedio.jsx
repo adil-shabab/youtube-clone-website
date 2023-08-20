@@ -27,12 +27,19 @@ import Channel1 from '../feed/img/sample-channel.jpg'       // to remove
 import Thumbnails2 from '../feed/img/sample-thumbnail-2.png'   // to remove
 import Channel2 from '../feed/img/sample-channel-2.jpg'       // to remove
 import VedioCard from '../../components/vediocard/VedioCard'
+import { FetchFromAPI } from '../../api/FetchFromAPI'
+import { useParams } from 'react-router-dom'
 
 
 
 function Vedio() {
 
+  const { id } = useParams();
+
+
   const [isMobile, setIsMobile] = useState(false);
+  const [videoDetails, setVideoDetails] = useState([]);
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -54,6 +61,17 @@ function Vedio() {
   };
 
 
+  useEffect(() => {
+    FetchFromAPI(`videos?id=${id}&part=contentDetails,snippet,statistics`)
+      .then((data) => {
+        setVideoDetails(data.items[0]); // Assuming data contains video details
+        console.log(data)
+      })
+      .catch((error) => {
+        console.error('Error fetching video details:', error);
+      });
+  }, [id]);
+
 
   let array = [
     {img: Thumbnails1, title: 'King of Kotha - Kalapakkaara Lyric Video | Dulquer Salmaan | Abhilash Joshiy | Jakes Bejoy', channel: Channel1, views: '2.5M views . 1 day ago ', channelName: 'Sony Music South'},
@@ -61,7 +79,6 @@ function Vedio() {
   ]
 
 
-  
 
   return (
     <div className='feed_container'>
@@ -72,7 +89,7 @@ function Vedio() {
 
           <div style={{ position: 'relative', width: '100%', paddingBottom: '56.25%' }}>
             <iframe
-              src="https://www.youtube.com/embed/0E1kVRRi6lk?autoplay=1&mute=0"
+              src={`https://www.youtube.com/embed/${id}?autoplay=1&mute=0`}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
               style={{
@@ -392,10 +409,8 @@ function Vedio() {
             <div className="related_videos">
               
             <div className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
-              <VedioCard video={array[0]} />
             </div>
             <div className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
-              <VedioCard video={array[1]} />
             </div>
 
             
