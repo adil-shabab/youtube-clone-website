@@ -32,6 +32,7 @@ import ViewCount from '../../utlis/ViewCount'
 import { FetchFromAPI } from '../../api/FetchFromAPI'
 import { useParams } from 'react-router-dom'
 import TimeAgo from '../../utlis/TimeAgo'
+import Sidebar from '../../components/sidebar/Sidebar'
 
 
 
@@ -45,6 +46,7 @@ function Vedio() {
   const [channelDetails, setChannelDetails] = useState([]);
   const [relatedVideos, setRelatedVideos] = useState([]);
   const [comments, setComments] = useState([]);
+  const [isSidebarActive, setIsSidebarActive] = useState(false);
 
 
   useEffect(() => {
@@ -110,6 +112,8 @@ function Vedio() {
       setRelatedVideos(data.items)
     })
   }, [id]);
+
+
 
 
 
@@ -215,11 +219,6 @@ function Vedio() {
                 )
               })}
 
-
-
-             
-
-
             </div>
 
             }
@@ -251,6 +250,13 @@ function Vedio() {
 
         </div>
       </div>
+
+
+
+      {isSidebarActive &&
+        <Sidebar />
+      }
+
     </div>
   )
 }

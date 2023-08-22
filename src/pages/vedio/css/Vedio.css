@@ -83,7 +83,12 @@
     background: var(--primary-color) !important;
     margin-right: 20px;
 }
-
+.sidebar{
+    position: fixed;
+    top: 0px;
+    width: 231px;
+    margin-top: 76px;
+}
 
 .video_description{
     margin-top: 20px;
