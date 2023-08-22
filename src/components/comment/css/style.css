@@ -25,6 +25,11 @@
     font-family: var(--lightfont);
     margin-bottom: 5px;
 }
+.comment .txt_area .txt a{
+    font-size: 15px;
+    font-family: var(--lightfont);
+    text-decoration: none;
+}
 .comment .txt_area .like{
     display: flex;
     align-items: center;

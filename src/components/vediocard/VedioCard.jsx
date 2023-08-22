@@ -16,7 +16,7 @@ function VedioCard({ video }) {
       : '';
 
   return (
-    <Link to={`/video/${video.id.videoId}`}>
+    <Link className='link' to={`/video/${video.id.videoId}`}>
     <div className="vedio_card">
       <div className="img_section">
         <img

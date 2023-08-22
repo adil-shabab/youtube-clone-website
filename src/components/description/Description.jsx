@@ -7,16 +7,16 @@ const Description = ({ txt }) => {
     setShowFullDescription(!showFullDescription);
   };
 
-  const lines = txt.split('\n');
+  const lines = txt?.split('\n');
 
   return (
     <div>
-      {lines.map((line, index) => (
+      {lines?.map((line, index) => (
         <p key={index} className="desc">
           {showFullDescription || index < 1 ? line : null}
         </p>
       ))}
-      {lines.length > 1 && (
+      {lines?.length > 1 && (
         <span className="toggle" onClick={toggleDescription}>
           {showFullDescription ? ' Show less' : ' Show more'}
         </span>

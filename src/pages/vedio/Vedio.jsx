@@ -27,8 +27,11 @@ import Channel1 from '../feed/img/sample-channel.jpg'       // to remove
 import Thumbnails2 from '../feed/img/sample-thumbnail-2.png'   // to remove
 import Channel2 from '../feed/img/sample-channel-2.jpg'       // to remove
 import VedioCard from '../../components/vediocard/VedioCard'
+import ViewCount from '../../utlis/ViewCount'
+
 import { FetchFromAPI } from '../../api/FetchFromAPI'
 import { useParams } from 'react-router-dom'
+import TimeAgo from '../../utlis/TimeAgo'
 
 
 
@@ -39,6 +42,9 @@ function Vedio() {
 
   const [isMobile, setIsMobile] = useState(false);
   const [videoDetails, setVideoDetails] = useState([]);
+  const [channelDetails, setChannelDetails] = useState([]);
+  const [relatedVideos, setRelatedVideos] = useState([]);
+  const [comments, setComments] = useState([]);
 
 
   useEffect(() => {
@@ -73,6 +79,40 @@ function Vedio() {
   }, [id]);
 
 
+  useEffect(() => {
+    FetchFromAPI(`channels?id=${videoDetails?.snippet?.channelId}&part=snippet,statistics`)
+      .then((data) => {
+        setChannelDetails(data.items[0]); // Assuming data contains video details
+        console.log(data)
+      })
+      .catch((error) => {
+        console.error('Error fetching video details:', error);
+      });
+  }, [videoDetails]);
+
+
+  useEffect(() => {
+    FetchFromAPI(`commentThreads?videoId=${id}&part=snippet`)
+      .then((data) => {
+        setComments(data.items); // Assuming data contains comment details
+        console.log(data)
+      })
+      .catch((error) => {
+        console.error('Error fetching video details:', error);
+      });
+  }, [id]);
+
+
+  useEffect(() => {
+    FetchFromAPI(`search?part=id,snippet&q=malayalam`)
+    .then((data) => {
+      console.log(data)
+      setRelatedVideos(data.items)
+    })
+  }, [id]);
+
+
+
   let array = [
     {img: Thumbnails1, title: 'King of Kotha - Kalapakkaara Lyric Video | Dulquer Salmaan | Abhilash Joshiy | Jakes Bejoy', channel: Channel1, views: '2.5M views . 1 day ago ', channelName: 'Sony Music South'},
     {img: Thumbnails2, title: 'Halaballoo - Video Song | RDX | Shane Nigam,Antony Varghese, Neeraj Madhav | Nahas Hidhayath', channel: Channel2, views: '1.2M views . 15 hours ago ', channelName: 'Saregama Malayalam'},
@@ -103,20 +143,24 @@ function Vedio() {
           </div>
         
 
-          <h2 className="vedio_title">Beast - Official Trailer | Thalapathy Vijay | Sun Pictures | Nelson | Anirudh | Pooja Hegde</h2>
+          <h2 className="vedio_title">{videoDetails?.snippet?.title}</h2>
             <div className="row channel_detail_section">
               <div className="col-md-6 channel_main_details">
-                <img src={SunTV} className='channel_img img-fluid' alt="" />
+                <img src={channelDetails?.snippet?.thumbnails?.default?.url} className='channel_img img-fluid' alt="" />
                 <div className="channel">
-                  <h5 className="channel_title">Sun TV</h5>
-                  <p className="subscribers">23.5M subscribers</p>
+                  <h5 className="channel_title">{channelDetails?.brandingSettings?.channel?.title}</h5>
+                  <p className="subscribers">
+                   <ViewCount indicator="" txt="" count={channelDetails?.statistics?.subscriberCount} />
+                  </p>
                 </div>
                 <button className="subscribe_btn">Subscribe</button>
               </div>
               <div className="col-md-6 video_detail">
                 <div className="sm_box">
                   <img src={Like} className='img-fluid' alt="" />
-                  <p className='txt'>3.2M</p>
+                  <p className='txt ms-0'>
+                    <ViewCount indicator="" txt="" count={videoDetails?.statistics?.likeCount} />
+                  </p>
                 </div>
                 <div className="sm_box">
                   <img src={Share} alt="" className="img-fluid" />
@@ -131,30 +175,19 @@ function Vedio() {
 
 
             <div className="video_description">
-              <p className="view_time">62M views  1 year ago</p>
+              <div className="d-flex detail_flex">
+                <ViewCount count={videoDetails?.statistics?.viewCount} indicator="view_time" txt="views" />
+                <TimeAgo date={new Date(videoDetails?.snippet?.publishedAt)} />
+              </div>
               <Description
-              txt = {`Watch the much-awaited official trailer from Thalapathy Vijay’s "BEAST" by Sun Pictures, Directed by Nelson Dilipkumar & Music by Anirudh Ravichander.
-                    Movie Credits:
-
-                    Star Cast : Vijay, Pooja Hegde, Selvaraghavan, Yogi Babu, Redin Kingsley, Bjorn Surrao, VTV Ganesh, Aparna Das, Shine Tom Chacko, Liliput Faruqui, Ankur Ajit Vikal & Others.
-
-                    Produced by: Sun Pictures
-                    Directed by: Nelson Dilipkumar
-                    Cinematography: Manoj Paramahamsa
-                    Editing by: R. Nirmal
-                    Art: D.R.K. Kiran
-                    Costume Design by: V. Sai, Pallavi Singh
-                    Makeup: P. Nagarajan
-                    VFX: Bejoy Arputharaj, Phantom-fx
-                    Stunt: AnbAriv
-                    Choreographer: Jani`}
+              txt = {videoDetails?.snippet?.description}
               />
             </div>
 
 
 
             {isMobile && 
-              <div onClick={toggleComments} className="view_comment_btn">View Comments (202312)</div>
+              <div onClick={toggleComments} className="view_comment_btn">View Comments ({videoDetails?.statistics?.commentCount})</div>
             }
             
             {!isMobile && 
@@ -167,89 +200,24 @@ function Vedio() {
             {!isMobile && 
 
             <div className="video_comments">
-              <p className="comment_count">202,312 Comments</p>
+              <p className="comment_count">{videoDetails?.statistics?.commentCount} Comments</p>
 
 
-              <Comment
-                profileImage={Profile}
-                username="@1mindvoicetamil"
-                date="1 year ago"
-                text="Another RECORD 🔥🔥"
-                likeCount="558"
-              />
+              {comments?.map((item)=>{
+                return (
+                    <Comment
+                      profileImage={item?.snippet?.topLevelComment?.snippet?.authorProfileImageUrl}
+                      username={item?.snippet?.topLevelComment?.snippet?.authorDisplayName}
+                      date={item?.snippet?.topLevelComment?.snippet?.updatedAt}
+                      text={item?.snippet?.topLevelComment?.snippet?.textDisplay}
+                      likeCount={item?.snippet?.topLevelComment?.snippet?.likeCount}
+                    />
+                )
+              })}
 
-              <Comment
-                profileImage={Profile2}
-                username="@hydrophotography"
-                date="1 year ago"
-                text="Beast was 8/10 for me. Minus points as expected more logic and wanted more romance and comedy scenes. Other than that, cinematography, music, action scenes and dance all were awesome. All the actors did their parts well. Thalapathy mass and screen presence 🔥🔥🔥 An enjoyable commercial entertainer you can watch with families 👌🏽💯"
-                likeCount="88"
-              />
 
-              <Comment
-                profileImage={Profile3}
-                username="@nikhildaniel"
-                date="8 months ago"
-                text="Eppa paathalum pure goosebumps Thalapa🔥🔥"
-                likeCount="112"
-              />
 
-              <Comment
-                profileImage={Profile4}
-                username="@tijotjoseph"
-                date="5 months ago"
-                text="Anirudh Ravichander just never misses, does he? His music is always on point. 🙌"
-                likeCount="200"
-              />
-
-              <Comment
-                profileImage={Profile5}
-                username="@aslambot"
-                date="2 days ago"
-                text="Highest likes in Thalapathy movies 🔥🔥🔥 ithu beast mode 🔥😍"
-                likeCount="55"
-              />
              
-             
-              <Comment
-                profileImage={Profile}
-                username="@1mindvoicetamil"
-                date="1 year ago"
-                text="Another RECORD 🔥🔥"
-                likeCount="558"
-              />
-
-              <Comment
-                profileImage={Profile2}
-                username="@hydrophotography"
-                date="1 year ago"
-                text="Beast was 8/10 for me. Minus points as expected more logic and wanted more romance and comedy scenes. Other than that, cinematography, music, action scenes and dance all were awesome. All the actors did their parts well. Thalapathy mass and screen presence 🔥🔥🔥 An enjoyable commercial entertainer you can watch with families 👌🏽💯"
-                likeCount="88"
-              />
-
-              <Comment
-                profileImage={Profile3}
-                username="@nikhildaniel"
-                date="8 months ago"
-                text="Eppa paathalum pure goosebumps Thalapa🔥🔥"
-                likeCount="112"
-              />
-
-              <Comment
-                profileImage={Profile4}
-                username="@tijotjoseph"
-                date="5 months ago"
-                text="Anirudh Ravichander just never misses, does he? His music is always on point. 🙌"
-                likeCount="200"
-              />
-
-              <Comment
-                profileImage={Profile5}
-                username="@aslambot"
-                date="2 days ago"
-                text="Highest likes in Thalapathy movies 🔥🔥🔥 ithu beast mode 🔥😍"
-                likeCount="55"
-              />
 
 
             </div>
@@ -266,160 +234,19 @@ function Vedio() {
               
 
 
-            <RelatedCard
-            thumbnailSrc={Thumbnail2}
-            videoTitle="LEO - Bloody Sweet Promo | Thalapathy Vijay | Lokesh Kanagaraj | Anirudh"
-            channelName="Sony Music India"
-            views="64M"
-            date="6 months ago"
-          />
-          <RelatedCard
-            thumbnailSrc={Thumbnail1}
-            videoTitle="VIKRAM - Official Trailer | Kamal Haasan | VijaySethupathi, FahadhFaasil | LokeshKanagaraj | Anirudh"
-            channelName="Sun TV"
-            views="28M"
-            date="5 months ago"
-          />
-          <RelatedCard
-            thumbnailSrc={Thumbnail3}
-            videoTitle="VIJAYudan Nerukku Ner - Exclusive Interview | Full Show | Thalapathy Vijay | Nelson | BEAST | Sun TV"
-            channelName="Sun TV"
-            views="1.8M"
-            date="8 months ago"
-          />
-          <RelatedCard
-            thumbnailSrc={Thumbnail4}
-            videoTitle="Jailer- Mohanlal | Mathew Bgm | HD full | Rajnikanth | Nelson | Rockstar Anirudh | BGM BOSS"
-            channelName="BGM BOSS"
-            views="230K"
-            date="2 days ago"
-          />
-          <RelatedCard
-            thumbnailSrc={Thumbnail5}
-            videoTitle="LEO - Glimpse of Antony Das | Thalapathy Vijay | Lokesh Kanagaraj | Anirudh Ravichander"
-            channelName="Sony South Music"
-            views="13M"
-            date="2 weeks ago"
-          />
-          <RelatedCard
-            thumbnailSrc={Thumbnail6}
-            videoTitle="Jagame Thandhiram - Bujji Video | Dhanush | Santhosh Narayanan | Karthik Subbaraj | Anirudh"
-            channelName="Sony South Music"
-            views="102M"
-            date="2 year ago"
-          />
-
-
-            <RelatedCard
-            thumbnailSrc={Thumbnail2}
-            videoTitle="LEO - Bloody Sweet Promo | Thalapathy Vijay | Lokesh Kanagaraj | Anirudh"
-            channelName="Sony Music India"
-            views="64M"
-            date="6 months ago"
-          />
-          <RelatedCard
-            thumbnailSrc={Thumbnail1}
-            videoTitle="VIKRAM - Official Trailer | Kamal Haasan | VijaySethupathi, FahadhFaasil | LokeshKanagaraj | Anirudh"
-            channelName="Sun TV"
-            views="28M"
-            date="5 months ago"
-          />
-          <RelatedCard
-            thumbnailSrc={Thumbnail3}
-            videoTitle="VIJAYudan Nerukku Ner - Exclusive Interview | Full Show | Thalapathy Vijay | Nelson | BEAST | Sun TV"
-            channelName="Sun TV"
-            views="1.8M"
-            date="8 months ago"
-          />
-          <RelatedCard
-            thumbnailSrc={Thumbnail4}
-            videoTitle="Jailer- Mohanlal | Mathew Bgm | HD full | Rajnikanth | Nelson | Rockstar Anirudh | BGM BOSS"
-            channelName="BGM BOSS"
-            views="230K"
-            date="2 days ago"
-          />
-          <RelatedCard
-            thumbnailSrc={Thumbnail5}
-            videoTitle="LEO - Glimpse of Antony Das | Thalapathy Vijay | Lokesh Kanagaraj | Anirudh Ravichander"
-            channelName="Sony South Music"
-            views="13M"
-            date="2 weeks ago"
-          />
-          <RelatedCard
-            thumbnailSrc={Thumbnail6}
-            videoTitle="Jagame Thandhiram - Bujji Video | Dhanush | Santhosh Narayanan | Karthik Subbaraj | Anirudh"
-            channelName="Sony South Music"
-            views="102M"
-            date="2 year ago"
-          />
-
-
-            <RelatedCard
-            thumbnailSrc={Thumbnail2}
-            videoTitle="LEO - Bloody Sweet Promo | Thalapathy Vijay | Lokesh Kanagaraj | Anirudh"
-            channelName="Sony Music India"
-            views="64M"
-            date="6 months ago"
-          />
-          <RelatedCard
-            thumbnailSrc={Thumbnail1}
-            videoTitle="VIKRAM - Official Trailer | Kamal Haasan | VijaySethupathi, FahadhFaasil | LokeshKanagaraj | Anirudh"
-            channelName="Sun TV"
-            views="28M"
-            date="5 months ago"
-          />
-          <RelatedCard
-            thumbnailSrc={Thumbnail3}
-            videoTitle="VIJAYudan Nerukku Ner - Exclusive Interview | Full Show | Thalapathy Vijay | Nelson | BEAST | Sun TV"
-            channelName="Sun TV"
-            views="1.8M"
-            date="8 months ago"
-          />
-          <RelatedCard
-            thumbnailSrc={Thumbnail4}
-            videoTitle="Jailer- Mohanlal | Mathew Bgm | HD full | Rajnikanth | Nelson | Rockstar Anirudh | BGM BOSS"
-            channelName="BGM BOSS"
-            views="230K"
-            date="2 days ago"
-          />
-          <RelatedCard
-            thumbnailSrc={Thumbnail5}
-            videoTitle="LEO - Glimpse of Antony Das | Thalapathy Vijay | Lokesh Kanagaraj | Anirudh Ravichander"
-            channelName="Sony South Music"
-            views="13M"
-            date="2 weeks ago"
-          />
-          <RelatedCard
-            thumbnailSrc={Thumbnail6}
-            videoTitle="Jagame Thandhiram - Bujji Video | Dhanush | Santhosh Narayanan | Karthik Subbaraj | Anirudh"
-            channelName="Sony South Music"
-            views="102M"
-            date="2 year ago"
-          />
-
-
-
-            </div>
-
-
-
-
+            {relatedVideos.map((item)=>{
+              return(
+                <RelatedCard
+                thumbnailSrc={item?.snippet?.thumbnails?.medium?.url}
+                videoTitle={item?.snippet?.description}
+                channelName={item?.snippet?.channelTitle}
+                date={item?.snippet?.publishedAt}
+                id={item?.id?.videoId}
+                />
+              )
+            })}
           </div>
-          <div className="col-12 d-md-none d-block">
-            <div className="related_videos">
-              
-            <div className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
-            </div>
-            <div className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
-            </div>
-
-            
-
-
-
-            </div>
-          </div>
-
+        </div>
 
 
         </div>

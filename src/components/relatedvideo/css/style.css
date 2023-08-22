@@ -9,6 +9,8 @@
 }
 .video_card .thumbnail{
     width: 190px;
+    height: 108px;
+    object-fit: cover;
 }
 .video_card .txt_area{
     margin-left: 10px;

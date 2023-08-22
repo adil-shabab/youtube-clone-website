@@ -2,7 +2,7 @@
 
 .video_details .vedio_title {
     color: var(--text-color);
-    font-size: 20px;
+    font-size: 19px;
     font-family: var(--mediumfont);
     margin-top: 12px;
     margin-bottom: 10px;
@@ -37,6 +37,12 @@
     font-family: var(--lightfont);
     color: var(--text-color);
 }
+.video_details .channel_detail_section .channel_main_details .subscribers p{
+    margin-bottom: 0px;
+    font-family: var(--lightfont);
+    color: var(--text-color);
+    font-size: 15px;
+}
 .video_details .channel_detail_section .channel_main_details .subscribe_btn{
     border-radius: 20px;
 }
@@ -66,6 +72,16 @@
     margin-bottom: 0px;
     background: var(--primary-color);
     margin-left: 12px;
+    font-size: 15px;
+}
+.detail_flex{
+    background: var(--primary-color) !important;
+}
+.detail_flex > *{
+    margin: 0px;
+    margin-top: 1px !important;
+    background: var(--primary-color) !important;
+    margin-right: 20px;
 }
 
 

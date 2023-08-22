@@ -31,6 +31,9 @@ a{
   color: rgb(224, 224, 224);
   font-family: var(--regularfont);
 }
+.link{
+  text-decoration: none;
+}
 
 
 /* fonts  */
