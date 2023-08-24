@@ -4,7 +4,7 @@ import TimeAgo from '../../utlis/TimeAgo';
 import Profile from '../../assets/img/profile.jpg';
 import { Link } from 'react-router-dom';
 
-function VedioCard({ video }) {
+function VedioCard({ video, channel, logo }) {
   const truncatedText = video.snippet.title
     .split(' ')
     .slice(0, 13)
@@ -26,7 +26,11 @@ function VedioCard({ video }) {
         />
       </div>
       <div className="d-flex">
-        <img src={Profile} alt="" className="channel_img img-fluid" />
+        {channel ? 
+          <img src={logo} alt="" className="channel_img img-fluid" />
+          :
+          <img src={Profile} alt="" className="channel_img img-fluid" />
+        }
         <div>
           <h4 className="title">
             {truncatedText}

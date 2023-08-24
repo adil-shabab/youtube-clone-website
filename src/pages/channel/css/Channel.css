@@ -58,6 +58,7 @@
 }
 .bg_channel{
     height: 40vh;
+    width: 100%;
     object-fit: cover;
 }
 

@@ -20,6 +20,7 @@ function Channel() {
   const {showMenu, setShowMenu} = useContext(MyContext)
 
   const [channelDetails, setChannelDetails] = useState([]);
+  const [channelVideos, setChannelVideos] = useState([]);
 
   let array = [
     {img: Thumbnail1, title: 'King of Kotha - Kalapakkaara Lyric Video | Dulquer Salmaan | Abhilash Joshiy | Jakes Bejoy', channel: Channel1, views: '2.5M views . 1 day ago ', channelName: 'Sony Music South'},
@@ -35,6 +36,18 @@ function Channel() {
       })
       .catch((error) => {
         console.log('Error fetching channel details:', error);
+      });
+  }, [id]);
+
+
+  useEffect(() => {
+    FetchFromAPI(`search?channelId=${id}&part=id,snippet&order=date`)
+      .then((data) => {
+        setChannelVideos(data.items); // Assuming data contains video details
+        console.log(data)
+      })
+      .catch((error) => {
+        console.log('Error fetching channel videos:', error);
       });
   }, [id]);
 
@@ -77,6 +90,15 @@ function Channel() {
         </div>
 
 
+        <div className='row mt-4'>
+          {channelVideos?.map((item)=>{
+            return(
+              <div className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
+                <VedioCard video={item} channel={true} logo={channelDetails?.snippet?.thumbnails?.high?.url} />
+              </div>
+            )
+          })}
+        </div>
 
         
       </div>
