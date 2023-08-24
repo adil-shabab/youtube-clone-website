@@ -31,8 +31,8 @@ function App() {
   return (
     <MyContext.Provider value={sharedState}>
       <div className='app'>
+      <Router>
         <Navbar />
-        <Router>
           <Routes>
             <Route exact path="/" element={<Feed />}/>
             <Route path="/video/:id" element={<Vedio />}/>

@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import './css/Navbar.css'
 import Logo from '../../assets/img/logo.png'
 import Menu from './img/hamburger-menu.png'
@@ -9,13 +9,23 @@ import Avatar from './img/avatar.png'
 import Notification from './img/notification.png'
 import Video from './img/video.png'
 import MyContext from '../../context/MyContext'
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 function Navbar() {
 
-  const {isSidebarActive, setIsSidebarActive, showMenu,setShowMenu, setIsMobileSearch, isMobileSearch} = useContext(MyContext)
+  const navigate = useNavigate();
+  
+  const [search, setSearch] = useState("");
+
+  const {isSidebarActive, setIsSidebarActive, showMenu,setShowMenu, setIsMobileSearch, isMobileSearch, setSelectedItem} = useContext(MyContext)
+
+  const handleInputChange = (event) =>{
+    setSearch(event.target.value)
+  }
+
 
   return (
     <div className='header'>
@@ -33,8 +43,11 @@ function Navbar() {
         <div className="col-lg-8 col-md-6 col-1 d-flex align-items-center">
           <div className="header_search_section">
             <div className="search">
-              <input placeholder='Search' type="text" className='search_input' />
-              <div className='search_icon_div'>
+              <input value={search} onChange={handleInputChange} placeholder='Search' type="text" className='search_input' />
+              <div onClick={()=> {
+                setSelectedItem(search)
+                navigate("/")
+              }} className='search_icon_div'>
                 <img src={Search} alt="search-icon" className='search_icon' />
               </div>
             </div>
