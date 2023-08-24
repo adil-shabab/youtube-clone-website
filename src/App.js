@@ -12,6 +12,8 @@ function App() {
   const [showMenu, setShowMenu] = useState(false);
   const [isMobileSearch, setIsMobileSearch] = useState(false);
   const [selectedItem, setSelectedItem] = useState("New Malayalam Videos");
+  const [isSidebarActive, setIsSidebarActive] = useState(false);
+
 
 
 
@@ -21,7 +23,9 @@ function App() {
     isMobileSearch,
     setIsMobileSearch,
     selectedItem,
-    setSelectedItem
+    setSelectedItem,
+    isSidebarActive,
+    setIsSidebarActive
   }
 
   return (

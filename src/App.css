@@ -11,9 +11,14 @@
 }
 .app{
   padding: 0px 28px;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 a{
   text-decoration: none;
+}
+.cursor_pointer{
+  cursor: pointer;
 }
 
 :root {

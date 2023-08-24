@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import Like from './img/like.png'
 import Share from './img/share.png'
 import Download from './img/download.png'
@@ -33,6 +33,7 @@ import { FetchFromAPI } from '../../api/FetchFromAPI'
 import { useParams } from 'react-router-dom'
 import TimeAgo from '../../utlis/TimeAgo'
 import Sidebar from '../../components/sidebar/Sidebar'
+import MyContext from '../../context/MyContext'
 
 
 
@@ -41,12 +42,15 @@ function Vedio() {
   const { id } = useParams();
 
 
+  const {isSidebarActive, setIsSidebarActive} = useContext(MyContext)
+
+
+
   const [isMobile, setIsMobile] = useState(false);
   const [videoDetails, setVideoDetails] = useState([]);
   const [channelDetails, setChannelDetails] = useState([]);
   const [relatedVideos, setRelatedVideos] = useState([]);
   const [comments, setComments] = useState([]);
-  const [isSidebarActive, setIsSidebarActive] = useState(false);
 
 
   useEffect(() => {
@@ -106,7 +110,7 @@ function Vedio() {
 
 
   useEffect(() => {
-    FetchFromAPI(`search?part=id,snippet&q=malayalam`)
+    FetchFromAPI(`search?part=id,snippet&q=New malayalam Movie`)
     .then((data) => {
       console.log(data)
       setRelatedVideos(data.items)
@@ -151,10 +155,10 @@ function Vedio() {
             <div className="row channel_detail_section">
               <div className="col-md-6 channel_main_details">
                 <img src={channelDetails?.snippet?.thumbnails?.default?.url} className='channel_img img-fluid' alt="" />
-                <div className="channel">
+                <div className="channel ms-md-0 ms-2">
                   <h5 className="channel_title">{channelDetails?.brandingSettings?.channel?.title}</h5>
                   <p className="subscribers">
-                   <ViewCount indicator="" txt="" count={channelDetails?.statistics?.subscriberCount} />
+                   <ViewCount indicator="" txt="Subscribers" count={channelDetails?.statistics?.subscriberCount} />
                   </p>
                 </div>
                 <button className="subscribe_btn">Subscribe</button>

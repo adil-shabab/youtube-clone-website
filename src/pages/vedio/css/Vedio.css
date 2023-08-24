@@ -90,6 +90,7 @@
     margin-top: 76px;
 }
 
+
 .video_description{
     margin-top: 20px;
     background-color: var(--primary-color);
@@ -193,5 +194,12 @@
     }
     .video_details .channel_detail_section .video_detail .sm_box p{
         font-size: 14px;
+    }
+    .sidebar{
+        margin-top: 72px;
+        max-height: 90vh;
+    }
+    .video_details .channel_detail_section .channel_main_details .channel_title{
+        font-size: 15px;
     }
 }

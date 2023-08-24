@@ -15,14 +15,18 @@ import MyContext from '../../context/MyContext'
 
 function Navbar() {
 
-  const {showMenu,setShowMenu, setIsMobileSearch, isMobileSearch} = useContext(MyContext)
+  const {isSidebarActive, setIsSidebarActive, showMenu,setShowMenu, setIsMobileSearch, isMobileSearch} = useContext(MyContext)
 
   return (
     <div className='header'>
       <div className={`row ${isMobileSearch && 'd-none'}`}>
         <div className="col-lg-2 col-md-3 col-6 d-flex align-items-center">
-          <div className="header_logo_section">
-            <img onClick={() => setShowMenu(!showMenu)} src={Menu} alt="menu_bar" className='menu_bar' />
+          <div className="d-md-block d-none header_logo_section">
+            <img onClick={() => setIsSidebarActive(!isSidebarActive)} src={Menu} alt="menu_bar" className='cursor_pointer menu_bar' />
+            <img src={Logo} alt='logo' className='logo_img' />
+          </div>
+          <div className="d-md-none d-block header_logo_section">
+            <img onClick={() => setIsSidebarActive(!isSidebarActive)} src={Menu} alt="menu_bar" className='cursor_pointer menu_bar' />
             <img src={Logo} alt='logo' className='logo_img' />
           </div>
         </div>
