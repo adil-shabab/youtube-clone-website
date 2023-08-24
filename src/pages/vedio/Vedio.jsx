@@ -30,7 +30,7 @@ import VedioCard from '../../components/vediocard/VedioCard'
 import ViewCount from '../../utlis/ViewCount'
 
 import { FetchFromAPI } from '../../api/FetchFromAPI'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import TimeAgo from '../../utlis/TimeAgo'
 import Sidebar from '../../components/sidebar/Sidebar'
 import MyContext from '../../context/MyContext'
@@ -154,13 +154,17 @@ function Vedio() {
           <h2 className="vedio_title">{videoDetails?.snippet?.title}</h2>
             <div className="row channel_detail_section">
               <div className="col-md-6 channel_main_details">
+                <Link className='link' to={`/channel/${videoDetails?.snippet?.channelId}`}>
                 <img src={channelDetails?.snippet?.thumbnails?.default?.url} className='channel_img img-fluid' alt="" />
-                <div className="channel ms-md-0 ms-2">
+                </Link>
+                <Link className='link' to={`/channel/${videoDetails?.snippet?.channelId}`}>
+                <div className="channel ms-2">
                   <h5 className="channel_title">{channelDetails?.brandingSettings?.channel?.title}</h5>
                   <p className="subscribers">
                    <ViewCount indicator="" txt="Subscribers" count={channelDetails?.statistics?.subscriberCount} />
                   </p>
                 </div>
+                </Link>
                 <button className="subscribe_btn">Subscribe</button>
               </div>
               <div className="col-md-6 video_detail">

@@ -27,6 +27,7 @@
 .channel_details .logo_img{
     width: 120px;
     border-radius: 50%;
+    height: 120px;
 }
 .channel_details .name{
     font-family: 'RobotoRegular';
