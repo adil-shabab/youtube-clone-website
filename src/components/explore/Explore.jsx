@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useContext} from 'react'
 import './css/Explore.css'
 import HorizontalScroll from "react-scroll-horizontal";
 import MyContext from '../../context/MyContext';

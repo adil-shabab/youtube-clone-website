@@ -2,31 +2,11 @@ import React, {useState, useEffect, useContext} from 'react'
 import Like from './img/like.png'
 import Share from './img/share.png'
 import Download from './img/download.png'
-import SunTV from './img/sun-tv.jpg'
 import './css/Vedio.css'
 import Description from '../../components/description/Description'
 import Comment from '../../components/comment/Comment'
-import Profile from './img/profile.jpg'
-import Profile2 from './img/profile-2.jpg'
-import Profile3 from './img/profile-3.jpg'
-import Profile4 from './img/profile-4.jpg'
-import Profile5 from './img/profile-5.jpg'
-
-import Thumbnail1 from './img/thumbnail1.webp'
-import Thumbnail2 from './img/thumbnail2.webp'
-import Thumbnail3 from './img/thumbnail3.webp'
-import Thumbnail4 from './img/thumbnail4.webp'
-import Thumbnail5 from './img/thumbnail5.webp'
-import Thumbnail6 from './img/thumbnail6.webp'
-import RelatedCard from '../../components/relatedvideo/RelatedCard'
 
 
-
-import Thumbnails1 from '../feed/img/sample-thumbnail.png'   // to remove
-import Channel1 from '../feed/img/sample-channel.jpg'       // to remove
-import Thumbnails2 from '../feed/img/sample-thumbnail-2.png'   // to remove
-import Channel2 from '../feed/img/sample-channel-2.jpg'       // to remove
-import VedioCard from '../../components/vediocard/VedioCard'
 import ViewCount from '../../utlis/ViewCount'
 
 import { FetchFromAPI } from '../../api/FetchFromAPI'
@@ -42,7 +22,7 @@ function Vedio() {
   const { id } = useParams();
 
 
-  const {isSidebarActive, setIsSidebarActive} = useContext(MyContext)
+  const {isSidebarActive} = useContext(MyContext)
 
 
 
@@ -77,10 +57,9 @@ function Vedio() {
     FetchFromAPI(`videos?id=${id}&part=contentDetails,snippet,statistics`)
       .then((data) => {
         setVideoDetails(data.items[0]); // Assuming data contains video details
-        console.log(data)
       })
       .catch((error) => {
-        console.error('Error fetching video details:', error);
+        console.log('Error fetching video details:', error);
       });
   }, [id]);
 
@@ -89,10 +68,9 @@ function Vedio() {
     FetchFromAPI(`channels?id=${videoDetails?.snippet?.channelId}&part=snippet,statistics`)
       .then((data) => {
         setChannelDetails(data.items[0]); // Assuming data contains video details
-        console.log(data)
       })
       .catch((error) => {
-        console.error('Error fetching video details:', error);
+        console.log('Error fetching video details:', error);
       });
   }, [videoDetails]);
 
@@ -101,10 +79,9 @@ function Vedio() {
     FetchFromAPI(`commentThreads?videoId=${id}&part=snippet`)
       .then((data) => {
         setComments(data.items); // Assuming data contains comment details
-        console.log(data)
       })
       .catch((error) => {
-        console.error('Error fetching video details:', error);
+        console.log('Error fetching video details:', error);
       });
   }, [id]);
 
@@ -112,19 +89,10 @@ function Vedio() {
   useEffect(() => {
     FetchFromAPI(`search?part=id,snippet&q=New malayalam Movie`)
     .then((data) => {
-      console.log(data)
       setRelatedVideos(data.items)
     })
   }, [id]);
 
-
-
-
-
-  let array = [
-    {img: Thumbnails1, title: 'King of Kotha - Kalapakkaara Lyric Video | Dulquer Salmaan | Abhilash Joshiy | Jakes Bejoy', channel: Channel1, views: '2.5M views . 1 day ago ', channelName: 'Sony Music South'},
-    {img: Thumbnails2, title: 'Halaballoo - Video Song | RDX | Shane Nigam,Antony Varghese, Neeraj Madhav | Nahas Hidhayath', channel: Channel2, views: '1.2M views . 15 hours ago ', channelName: 'Saregama Malayalam'},
-  ]
 
 
 

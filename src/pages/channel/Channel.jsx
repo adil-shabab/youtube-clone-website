@@ -2,13 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import './css/Channel.css'
 import MyContext from '../../context/MyContext'
 import Sidebar from '../../components/sidebar/Sidebar'
-import Bg from './img/bg.png'
-import Logo from './img/logo.jpg'
 import VedioCard from '../../components/vediocard/VedioCard'
-import Thumbnail1 from '../../components/vediocard/img/sample-thumbnail.png'   // to remove
-import Channel1 from '../../components/vediocard/img/sample-channel.jpg'       // to remove
-import Thumbnail2 from '../../components/vediocard/img/sample-thumbnail-2.png'   // to remove
-import Channel2 from '../../components/vediocard/img/sample-channel-2.jpg'       // to remove
 import { useParams } from 'react-router-dom'
 import { FetchFromAPI } from '../../api/FetchFromAPI'
 import ViewCount from '../../utlis/ViewCount'
@@ -22,17 +16,13 @@ function Channel() {
   const [channelDetails, setChannelDetails] = useState([]);
   const [channelVideos, setChannelVideos] = useState([]);
 
-  let array = [
-    {img: Thumbnail1, title: 'King of Kotha - Kalapakkaara Lyric Video | Dulquer Salmaan | Abhilash Joshiy | Jakes Bejoy', channel: Channel1, views: '2.5M views . 1 day ago ', channelName: 'Sony Music South'},
-    {img: Thumbnail2, title: 'Halaballoo - Video Song | RDX | Shane Nigam,Antony Varghese, Neeraj Madhav | Nahas Hidhayath', channel: Channel2, views: '1.2M views . 15 hours ago ', channelName: 'Saregama Malayalam'},
-  ]
+
 
 
   useEffect(() => {
     FetchFromAPI(`channels?id=${id}&part=contentDetails,snippet,statistics`)
       .then((data) => {
         setChannelDetails(data.items[0]); // Assuming data contains video details
-        console.log(data)
       })
       .catch((error) => {
         console.log('Error fetching channel details:', error);
@@ -44,7 +34,6 @@ function Channel() {
     FetchFromAPI(`search?channelId=${id}&part=id,snippet&order=date`)
       .then((data) => {
         setChannelVideos(data.items); // Assuming data contains video details
-        console.log(data)
       })
       .catch((error) => {
         console.log('Error fetching channel videos:', error);

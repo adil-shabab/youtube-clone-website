@@ -10,7 +10,6 @@ import Notification from './img/notification.png'
 import Video from './img/video.png'
 import MyContext from '../../context/MyContext'
 import { useNavigate } from 'react-router-dom';
-import SearchIcon from './img/search.png'
 
 
 
@@ -22,7 +21,7 @@ function Navbar() {
   const [search, setSearch] = useState("");
   const [isTyping, setIsTyping] = useState(false);
 
-  const {isSidebarActive, setIsSidebarActive, showMenu,setShowMenu, setIsMobileSearch, isMobileSearch, setSelectedItem} = useContext(MyContext)
+  const {isSidebarActive, setIsSidebarActive, setIsMobileSearch, isMobileSearch, setSelectedItem} = useContext(MyContext)
 
 
 

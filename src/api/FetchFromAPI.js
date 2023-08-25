@@ -19,10 +19,9 @@ const options = {
 export const FetchFromAPI = async (url) => {
     try {
         const {data} = await axios.get(`${BASE_URL}/${url}`, options);
-        console.log(data);
         return data;
     } catch (error) {
-        console.error("Error making API request:", error);
+        console.log("Error making API request:", error);
         throw error;
     }
  }
