@@ -16,6 +16,7 @@ function ChannelCard({item}) {
       </div>
 
       <h6 className="title">{item.snippet.title}</h6>
+      <TimeAgo date={new Date(item.snippet.publishTime)} />
       <button className="subscribe_btn me-0">Subscribe</button>
       
     </div>

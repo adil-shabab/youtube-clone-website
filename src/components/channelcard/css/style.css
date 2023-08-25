@@ -19,5 +19,8 @@
 .channel_card .title{
     font-size: 20px;
     font-family: 'RobotoMedium',Arial, Helvetica, sans-serif;
-    margin-bottom: 10PX;
+    margin-bottom: 10px;
+}
+.channel_card .time_{
+    margin-bottom: 6px;
 }
