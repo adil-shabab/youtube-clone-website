@@ -1,4 +1,4 @@
-<div style="font-family: 'Arial', sans-serif; background-color: #f2f2f2; padding: 20px; border-radius: 5px; color: #333;">
+<div style="font-family: 'Arial', sans-serif; background-color: #f2f2f2; padding: 20px; border-radius: 5px; margin-bottom : 20px; color: #333;">
 
 # My Awesome Project
 
