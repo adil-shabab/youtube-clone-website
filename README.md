@@ -6,9 +6,11 @@ Welcome to my awesome project! This repository contains some cool stuff that I'v
 
 ## Features
 
-- Feature 1
-- Feature 2
-- Feature 3
+- Recommended Videos
+- Search Bar
+- Video Player
+- Comments Section
+- Video Description
 
 <div style="color: #ff9900;">
 Note: To replicate this, it's necessary to lower your Node version to 16.0.0. You can use nvm to downgrade the node version.
