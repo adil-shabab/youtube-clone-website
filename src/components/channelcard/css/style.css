@@ -1,0 +1,23 @@
+.channel_thumbnail{
+    border-radius: 50%;
+    height: 214px;
+}
+.img_section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.vedio_card{
+    background-color: var(--bg-color);
+}
+.channel_card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.channel_card .title{
+    font-size: 20px;
+    font-family: 'RobotoMedium',Arial, Helvetica, sans-serif;
+    margin-bottom: 10PX;
+}

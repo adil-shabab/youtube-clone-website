@@ -9,6 +9,7 @@ import Thumbnail2 from './img/sample-thumbnail-2.png'   // to remove
 import Channel2 from './img/sample-channel-2.jpg'       // to remove
 import MyContext from '../../context/MyContext'
 import { FetchFromAPI } from '../../api/FetchFromAPI'
+import ChannelCard from '../../components/channelcard/ChannelCard'
 
 
 
@@ -48,11 +49,18 @@ function Feed() {
 
           <div className='row'>
           
-            {videos.map((item)=> (
-              <div className="col-lg-4 col-md-6 col-sm-6 col-xsm-12">
-                <VedioCard video={item} />
+          {videos.map((item) => {
+            return (
+              <div className="col-lg-4 col-md-6 col-sm-6 col-xsm-12" key={item.id}>
+                {item.id.kind === "youtube#channel" ? (
+                  <ChannelCard item={item} />
+                ) : (
+                  <VedioCard video={item} />
+                )}
               </div>
-            ))}
+            );
+          })}
+
           </div>
         </div>
       </div>
