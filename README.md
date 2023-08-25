@@ -25,6 +25,13 @@ To start the project, run:
 ```shell
 npm start
 
+```
+
+Screenshots: 
+
 ![image](https://github.com/adil-shabab/youtube-clone-website/assets/101416092/0c61258f-4f9f-4ccb-b077-a70fc1cfd77f)
 ![image](https://github.com/adil-shabab/youtube-clone-website/assets/101416092/0f12913b-e37e-4018-b220-a92d5c0a3879)
 ![image](https://github.com/adil-shabab/youtube-clone-website/assets/101416092/c9103f07-d250-48d7-b602-65d43c583c0f)
+
+
+</div>
