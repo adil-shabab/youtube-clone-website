@@ -151,6 +151,27 @@
     border-radius: 5px;
 }
 
+.auto_complete{
+    position: fixed;
+    top: 65px;
+    background-color: var(--primary-color);
+    margin-left: -60px;
+    padding: 15px 25px;
+    border-radius: 15px;
+}
+.auto_complete h6.txt{
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    font-family: 'RobotoThin', sans-serif;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.auto_complete .search_icoon{
+    width: 23px;
+    background-color: var(--primary-color);
+    margin-right: 7px;
+}
+
 
 @media screen and (max-width:992px) {
 

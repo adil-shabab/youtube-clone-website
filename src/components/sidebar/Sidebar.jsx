@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import './css/Sidebar.css'
 import SidebarCard from '../sidebarcard/SidebarCard'
 import Home from './img/icons/home.png'
@@ -40,6 +40,8 @@ import Umer from './img/channels/umer.jpg'
 import VarietyMedia from './img/channels/variety-media.jpg'
 import ArrowDown from './img/icons/arrow-down.png'
 import ArrowUp from './img/icons/arrow-up.png'
+import { Link, useNavigate } from 'react-router-dom';
+import MyContext from '../../context/MyContext'
 
 
 
@@ -49,6 +51,12 @@ function Sidebar() {
 
   const [showMore, setShowMore] = useState(true);
   const [showMoreTxt, setShowMoreTxt] = useState("Show More");
+
+  const navigate = useNavigate();
+
+
+  const {setSelectedItem, selectedItem} = useContext(MyContext)
+
 
   const handleClickShowMore = () => {
     setShowMore(!showMore);
@@ -62,7 +70,12 @@ function Sidebar() {
 
   return (
     <div className='sidebar'>
-        <SidebarCard Img={Home} Txt="Home" is_active={true} is_channel={false} />
+        <div onClick={()=>{
+          setSelectedItem("New Indian Videos")
+          navigate("/")
+        }}>
+          <SidebarCard Img={Home} Txt="Home" is_active={true} is_channel={false} />
+        </div>
         <SidebarCard Img={Explore} Txt="Explore" is_active={false} is_channel={false} />
         <SidebarCard Img={Subscription} Txt="Subscription" is_active={false} is_channel={false} />
 
@@ -77,34 +90,160 @@ function Sidebar() {
         <div className="line"></div>
 
         <div>
-            <SidebarCard Img={AkilNrd} Txt="Akhil Nrd" is_active={false} is_channel={true} />
-            <SidebarCard Img={Brototype} Txt="Brototype Mala..." is_active={false} is_channel={true} />
-            <SidebarCard Img={SecretAgent} Txt="Secret Agent" is_active={false} is_channel={true} />
-            <SidebarCard Img={Ap} Txt="apimalayalamcomedy" is_active={false} is_channel={true} />
-            <SidebarCard Img={JsMastery} Txt="JavaScript Mastery" is_active={false} is_channel={true} />
-            <SidebarCard Img={MrLink} Txt="Mr.Link" is_active={false} is_channel={true} />
-            <SidebarCard Img={VarietyMedia} Txt="Variety Media" is_active={false} is_channel={true} />
-            <SidebarCard Img={Umer} Txt="Umer Abdussalam" is_active={false} is_channel={true} />
+            <div onClick={()=>{
+              navigate("/channel/UCLa-ASLMIpWEOlZsJ4_CLUg")
+            }}>
+              <SidebarCard Img={AkilNrd} Txt="Akhil Nrd" is_active={false} is_channel={true} />
+            </div>
+
+            <div onClick={()=>{
+              navigate("/channel/UCoGHeFY7jE2OB_TJS_87MOA")
+            }}>
+              <SidebarCard Img={Brototype} Txt="Brototype Mala..." is_active={false} is_channel={true} />
+            </div>
+
+            <div onClick={()=>{
+              navigate("/channel/UCnYvT1git-T2jcn_wT1utjQ")
+            }}>
+              <SidebarCard Img={SecretAgent} Txt="Secret Agent" is_active={false} is_channel={true} />
+            </div>
+
+
+            <div onClick={()=>{
+              navigate("/channel/UC-Uaz9tVnQS-wiOF1woadGA")
+            }}>
+              <SidebarCard Img={Ap} Txt="apimalayalamcomedy" is_active={false} is_channel={true} />
+            </div>
+
+            <div onClick={()=>{
+              navigate("/channel/UCmXmlB4-HJytD7wek0Uo97A")
+            }}>
+              <SidebarCard Img={JsMastery} Txt="JavaScript Mastery" is_active={false} is_channel={true} />
+            </div>
+
+            <div onClick={()=>{
+              navigate("/channel/UC1udfRC-_7vxFCrRiUG0Ppg")
+            }}>
+              <SidebarCard Img={MrLink} Txt="Mr.Link" is_active={false} is_channel={true} />
+            </div>
+
+            <div onClick={()=>{
+              navigate("/channel/UCFZqtti2VoNdgeLklh48Liw")
+            }}>
+              <SidebarCard Img={VarietyMedia} Txt="Variety Media" is_active={false} is_channel={true} />
+            </div>
             
 
+            <div onClick={()=>{
+              navigate("/channel/UCuZYQQGB5UhzZOS6YucIV9Q")
+            }}>
+              <SidebarCard Img={Umer} Txt="Umer Abdussalam" is_active={false} is_channel={true} />
+            </div>
+
             <div className={showMore && 'd-none'}>
+
+
+              <div onClick={()=>{
+                navigate("/channel/UCp_r6Z-Oh0YTf-ym71z5Nqg")
+              }}>
                 <SidebarCard Img={Asianet} Txt="Asianet" is_active={false} is_channel={true} />
+              </div>  
+              
+              <div onClick={()=>{
+                navigate("/channel/UCLbdVvreihwZRL6kwuEUYsA")
+              }}>
                 <SidebarCard Img={ThinkMusic} Txt="Think Music India" is_active={false} is_channel={true} />
+              </div>
+
+              <div onClick={()=>{
+                navigate("/channel/UCAIhHcOFcJSsj-16kc_y4fw")
+              }}>
                 <SidebarCard Img={MileStone} Txt="Milestone Makers" is_active={false} is_channel={true} />
+              </div>
+
+              <div onClick={()=>{
+                navigate("/channel/UCUPD0jQo-EP0B1Nf4uzeIMA")
+              }}>
                 <SidebarCard Img={Mazhavil} Txt="Mazhavil Manorama" is_active={false} is_channel={true} />
+              </div>
+
+              <div onClick={()=>{
+                navigate("/channel/UCNhaliLwhGH9wX3pe9bFTbA")
+              }}>
                 <SidebarCard Img={LifeShazzam} Txt="LifeofShazzam" is_active={false} is_channel={true} />
+              </div>
+
+              <div onClick={()=>{
+                navigate("/channel/UCDEEw71KgDrxG61_p7U58ZA")
+              }}>
                 <SidebarCard Img={Jayaraj} Txt="Jayaraj G Nath" is_active={false} is_channel={true} />
+              </div>
+
+              <div onClick={()=>{
+                navigate("/channel/UC9I8DWhqm5q7U_4fhfDwZIw")
+              }}>
                 <SidebarCard Img={Arjou} Txt="Arjyou" is_active={false} is_channel={true} />
+              </div>
+
+              <div onClick={()=>{
+                navigate("/channel/UCqeTj_QAnNlmt7FwzNwHZnA")
+              }}>
                 <SidebarCard Img={Sony} Txt="Sonny Sangha" is_active={false} is_channel={true} />
+              </div>
+
+              <div onClick={()=>{
+                navigate("/channel/UCAtHvaOVgCf28z79vUJm-bg")
+              }}>
                 <SidebarCard Img={ArunPradeep} Txt="Arun Pradeep" is_active={false} is_channel={true} />
+              </div>
+
+              <div onClick={()=>{
+                navigate("/channel/UC29ju8bIPH5as8OGnQzwJyA")
+              }}>
                 <SidebarCard Img={Traversy} Txt="Traversy Media" is_active={false} is_channel={true} />
+              </div>
+
+              <div onClick={()=>{
+                navigate("/channel/UCUXKQ3MLWpRldWiY9C-c25A")
+              }}>
                 <SidebarCard Img={EnglishHouse} Txt="English House" is_active={false} is_channel={true} />
+              </div>
+
+              <div onClick={()=>{
+                navigate("/channel/UC4XA9DBTDZ0mF4-sqnJRtJg")
+              }}>
                 <SidebarCard Img={Nick} Txt="Nick Vlogs" is_active={false} is_channel={true} />
+              </div>
+
+              <div onClick={()=>{
+                navigate("/channel/UC0XCrZT2-n_Yyj4gAePKekg")
+              }}>
                 <SidebarCard Img={Thoppi} Txt="Mrz Thoppi" is_active={false} is_channel={true} />
+              </div>
+
+              <div onClick={()=>{
+                navigate("/channel/UCLRIGBQ3iYEvQ6zqz8mWGoQ")
+              }}>
                 <SidebarCard Img={GingerMedia} Txt="Ginger Media" is_active={false} is_channel={true} />
+              </div>
+
+              <div onClick={()=>{
+                navigate("/channel/UC9MQp8a5uhaIosZPHaoqEXQ")
+              }}>
                 <SidebarCard Img={CallmeShazzam} Txt="CallMe Shazzam" is_active={false} is_channel={true} />
+              </div>
+
+              <div onClick={()=>{
+                navigate("/channel/UCv65_DW-OzwBgJw99zWJy3g")
+              }}>
                 <SidebarCard Img={FridayFilmHouse} Txt="Friday Film House" is_active={false} is_channel={true} />
+              </div>
+
+              <div onClick={()=>{
+                navigate("/channel/UCO3nZaqZVqoGKld5nGeRVJw")
+              }}>
                 <SidebarCard Img={DebugMedia} Txt="Debug Media" is_active={false} is_channel={true} />
+              </div>
             </div>
         </div>
 

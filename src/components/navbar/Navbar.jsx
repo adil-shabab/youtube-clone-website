@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useState, useRef, useEffect} from 'react'
 import './css/Navbar.css'
 import Logo from '../../assets/img/logo.png'
 import Menu from './img/hamburger-menu.png'
@@ -10,6 +10,7 @@ import Notification from './img/notification.png'
 import Video from './img/video.png'
 import MyContext from '../../context/MyContext'
 import { useNavigate } from 'react-router-dom';
+import SearchIcon from './img/search.png'
 
 
 
@@ -17,13 +18,22 @@ import { useNavigate } from 'react-router-dom';
 function Navbar() {
 
   const navigate = useNavigate();
-  
+
   const [search, setSearch] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
 
   const {isSidebarActive, setIsSidebarActive, showMenu,setShowMenu, setIsMobileSearch, isMobileSearch, setSelectedItem} = useContext(MyContext)
 
+
+
+
   const handleInputChange = (event) =>{
     setSearch(event.target.value)
+    if (event.target.value !== '') {
+      setIsTyping(true);
+    } else {
+      setIsTyping(false);
+    }
   }
 
 
@@ -51,6 +61,14 @@ function Navbar() {
                 <img src={Search} alt="search-icon" className='search_icon' />
               </div>
             </div>
+
+
+            {/*<div ref={destinationRef} className={!isTyping ? 'd-none' : 'auto_complete'}>
+              {isTyping &&             
+                <h6 className="txt"><img src={SearchIcon} className='search_icoon' /> Welcome to my channel</h6>
+              }
+            </div>*/}
+
             <div className='voice_icon_div'>
               <img src={Voice} alt="voice" className='voice_icon' />
             </div>
