@@ -12,7 +12,9 @@ Click here to see Website : 👉 https://youtube-clone-shabab.netlify.app
 - Search Bar
 - Video Player
 - Comments Section
-- Video Description
+- Video Details
+- Mobile Responsive
+
 
 <div style="color: #ff9900;">
 Note: To replicate this, it's necessary to lower your Node version to 16.0.0. You can use nvm to downgrade the node version.
